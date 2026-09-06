@@ -9,7 +9,11 @@
     "lint": "eslint",
     "db:update": "prisma db update",
     "db:migrate": "prisma db migrate",
+    "db:seed": "bash seed.sh",
     "contract:emit": "prisma contract emit"
+  },
+  "prisma": {
+    "seed": "ts-node src/prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/composer": "^0.17.0",
@@ -30,6 +34,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }
