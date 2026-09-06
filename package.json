@@ -6,12 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:update": "prisma db update",
+    "db:migrate": "prisma db migrate",
+    "contract:emit": "prisma contract emit"
   },
   "dependencies": {
+    "@prisma/composer": "^0.17.0",
+    "@prisma/composer-prisma-cloud": "^0.17.0",
+    "@prisma/orm-postgres": "^8.0.0-rc.8",
+    "dotenv": "^17.4.2",
     "next": "16.3.4",
+    "prisma": "^8.0.0-rc.13",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "temporal-polyfill": "^1.0.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

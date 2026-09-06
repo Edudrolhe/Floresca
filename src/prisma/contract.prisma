@@ -1,0 +1,93 @@
+// use prisma-next
+
+model Cliente {
+  idCliente Int      @id
+  nome      VarChar(50)
+  cpf       VarChar(15)
+  telefone  VarChar(15)
+  endereco  VarChar(50)
+  email     VarChar(50)?
+  vendas    Venda[]
+
+  @@map("Cliente")
+}
+
+model Produto {
+  idProduto   Int          @id
+  codBarras   Decimal      @map("cod_Barras")
+  descricao   VarChar(50)
+  categoria   VarChar(50)
+  quantidade  Int
+  preco       Float
+  idCategoria Int?
+  tipoProduto TipoProduto? @relation(fields: [idCategoria], references: [idCategoria], map: "FK_idCategoria")
+
+  @@map("Produto")
+}
+
+model TipoProduto {
+  idCategoria Int       @id
+  categoria   VarChar(50)
+  produtos    Produto[]
+
+  @@map("Tipo_produto")
+}
+
+model Funcionario {
+  idFuncionario Int    @id @map("idFunconario")
+  nome          VarChar(50)
+  cpf           VarChar(50)
+  telefone      VarChar(15)
+  email         VarChar(50)
+  dataAdmissao  Date?
+  idUsuario     Int?
+  salario       Float?
+  login         Login?    @relation(fields: [idUsuario], references: [iditemUsuario], map: "FK_idUsuario")
+  vendas        Venda[]
+
+  @@map("Funcionario")
+}
+
+model Login {
+  iditemUsuario Int           @id
+  descricao     VarChar(50)
+  funcionarios  Funcionario[]
+  vendas        Venda[]
+
+  @@map("Login")
+}
+
+model ItemVenda {
+  idVenda   Int
+  idProduto Int
+  venda     Venda   @relation(fields: [idVenda], references: [idVenda])
+  produto   Produto @relation(fields: [idProduto], references: [idProduto])
+
+  @@id([idVenda, idProduto])
+  @@map("item_venda")
+}
+
+model Venda {
+  idVenda       Int         @id
+  dataVenda     Date
+  produto       VarChar(50)
+  quantidade    Int
+  preco         Float
+  totalVenda    Float       @map("Total_Venda")
+  idFormaPgto   Int
+  idFuncionario Int
+  idCliente     Int?
+  cliente       Cliente?    @relation(fields: [idCliente], references: [idCliente], map: "FK_idCliente")
+  funcionario   Funcionario @relation(fields: [idFuncionario], references: [idFuncionario], map: "FK_idFuncionario")
+  formaPagto    Login       @relation(fields: [idFormaPgto], references: [iditemUsuario], map: "FK_idFormaPgto")
+  itens         ItemVenda[]
+
+  @@map("Venda")
+}
+
+model FormaPagto {
+  idFormaPgto Int    @id
+  descricao   VarChar(50)
+
+  @@map("FormaPagto")
+}
