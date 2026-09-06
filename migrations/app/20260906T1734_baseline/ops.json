@@ -1,0 +1,782 @@
+[
+  {
+    "id": "schema.public",
+    "label": "Create schema \"public\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres"
+    },
+    "precheck": [],
+    "execute": [
+      {
+        "description": "Create schema \"public\"",
+        "sql": "CREATE SCHEMA IF NOT EXISTS \"public\"",
+        "params": []
+      }
+    ],
+    "postcheck": []
+  },
+  {
+    "id": "table.Cliente",
+    "label": "Create table \"Cliente\"",
+    "summary": "Creates table \"Cliente\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Cliente"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Cliente\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Cliente\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Cliente\"",
+        "sql": "CREATE TABLE \"public\".\"Cliente\" (\n  \"cpf\" character varying(15) NOT NULL,\n  \"email\" character varying(50),\n  \"endereco\" character varying(50) NOT NULL,\n  \"idCliente\" int4 NOT NULL,\n  \"nome\" character varying(50) NOT NULL,\n  \"telefone\" character varying(15) NOT NULL,\n  PRIMARY KEY (\"idCliente\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Cliente\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Cliente\""]
+      }
+    ]
+  },
+  {
+    "id": "table.FormaPagto",
+    "label": "Create table \"FormaPagto\"",
+    "summary": "Creates table \"FormaPagto\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "FormaPagto"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"FormaPagto\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"FormaPagto\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"FormaPagto\"",
+        "sql": "CREATE TABLE \"public\".\"FormaPagto\" (\n  \"descricao\" character varying(50) NOT NULL,\n  \"idFormaPgto\" int4 NOT NULL,\n  PRIMARY KEY (\"idFormaPgto\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"FormaPagto\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"FormaPagto\""]
+      }
+    ]
+  },
+  {
+    "id": "table.Funcionario",
+    "label": "Create table \"Funcionario\"",
+    "summary": "Creates table \"Funcionario\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Funcionario"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Funcionario\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Funcionario\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Funcionario\"",
+        "sql": "CREATE TABLE \"public\".\"Funcionario\" (\n  \"cpf\" character varying(50) NOT NULL,\n  \"dataAdmissao\" date,\n  \"email\" character varying(50) NOT NULL,\n  \"idFunconario\" int4 NOT NULL,\n  \"idUsuario\" int4,\n  \"nome\" character varying(50) NOT NULL,\n  \"salario\" float8,\n  \"telefone\" character varying(15) NOT NULL,\n  PRIMARY KEY (\"idFunconario\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Funcionario\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Funcionario\""]
+      }
+    ]
+  },
+  {
+    "id": "table.Login",
+    "label": "Create table \"Login\"",
+    "summary": "Creates table \"Login\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Login"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Login\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Login\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Login\"",
+        "sql": "CREATE TABLE \"public\".\"Login\" (\n  \"descricao\" character varying(50) NOT NULL,\n  \"iditemUsuario\" int4 NOT NULL,\n  PRIMARY KEY (\"iditemUsuario\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Login\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Login\""]
+      }
+    ]
+  },
+  {
+    "id": "table.Produto",
+    "label": "Create table \"Produto\"",
+    "summary": "Creates table \"Produto\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Produto"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Produto\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Produto\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Produto\"",
+        "sql": "CREATE TABLE \"public\".\"Produto\" (\n  \"categoria\" character varying(50) NOT NULL,\n  \"cod_Barras\" numeric NOT NULL,\n  \"descricao\" character varying(50) NOT NULL,\n  \"idCategoria\" int4,\n  \"idProduto\" int4 NOT NULL,\n  \"preco\" float8 NOT NULL,\n  \"quantidade\" int4 NOT NULL,\n  PRIMARY KEY (\"idProduto\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Produto\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Produto\""]
+      }
+    ]
+  },
+  {
+    "id": "table.Tipo_produto",
+    "label": "Create table \"Tipo_produto\"",
+    "summary": "Creates table \"Tipo_produto\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Tipo_produto"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Tipo_produto\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Tipo_produto\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Tipo_produto\"",
+        "sql": "CREATE TABLE \"public\".\"Tipo_produto\" (\n  \"categoria\" character varying(50) NOT NULL,\n  \"idCategoria\" int4 NOT NULL,\n  PRIMARY KEY (\"idCategoria\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Tipo_produto\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Tipo_produto\""]
+      }
+    ]
+  },
+  {
+    "id": "table.Venda",
+    "label": "Create table \"Venda\"",
+    "summary": "Creates table \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"Venda\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"Venda\"",
+        "sql": "CREATE TABLE \"public\".\"Venda\" (\n  \"Total_Venda\" float8 NOT NULL,\n  \"dataVenda\" date NOT NULL,\n  \"idCliente\" int4,\n  \"idFormaPgto\" int4 NOT NULL,\n  \"idFuncionario\" int4 NOT NULL,\n  \"idVenda\" int4 NOT NULL,\n  \"preco\" float8 NOT NULL,\n  \"produto\" character varying(50) NOT NULL,\n  \"quantidade\" int4 NOT NULL,\n  PRIMARY KEY (\"idVenda\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"Venda\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Venda\""]
+      }
+    ]
+  },
+  {
+    "id": "table.item_venda",
+    "label": "Create table \"item_venda\"",
+    "summary": "Creates table \"item_venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "item_venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"item_venda\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"item_venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"item_venda\"",
+        "sql": "CREATE TABLE \"public\".\"item_venda\" (\n  \"idProduto\" int4 NOT NULL,\n  \"idVenda\" int4 NOT NULL,\n  PRIMARY KEY (\"idVenda\", \"idProduto\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"item_venda\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"item_venda\""]
+      }
+    ]
+  },
+  {
+    "id": "index.Funcionario.Funcionario_idUsuario_idx_2255b915",
+    "label": "Create index \"Funcionario_idUsuario_idx_2255b915\" on \"Funcionario\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Funcionario_idUsuario_idx_2255b915",
+        "table": "Funcionario"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Funcionario_idUsuario_idx_2255b915\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Funcionario_idUsuario_idx_2255b915\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Funcionario_idUsuario_idx_2255b915\"",
+        "sql": "CREATE INDEX \"Funcionario_idUsuario_idx_2255b915\" ON \"public\".\"Funcionario\" (\"idUsuario\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Funcionario_idUsuario_idx_2255b915\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Funcionario_idUsuario_idx_2255b915\""]
+      }
+    ]
+  },
+  {
+    "id": "index.Produto.Produto_idCategoria_idx_430ced79",
+    "label": "Create index \"Produto_idCategoria_idx_430ced79\" on \"Produto\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Produto_idCategoria_idx_430ced79",
+        "table": "Produto"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Produto_idCategoria_idx_430ced79\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Produto_idCategoria_idx_430ced79\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Produto_idCategoria_idx_430ced79\"",
+        "sql": "CREATE INDEX \"Produto_idCategoria_idx_430ced79\" ON \"public\".\"Produto\" (\"idCategoria\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Produto_idCategoria_idx_430ced79\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Produto_idCategoria_idx_430ced79\""]
+      }
+    ]
+  },
+  {
+    "id": "index.Venda.Venda_idCliente_idx_f51e9825",
+    "label": "Create index \"Venda_idCliente_idx_f51e9825\" on \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Venda_idCliente_idx_f51e9825",
+        "table": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Venda_idCliente_idx_f51e9825\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Venda_idCliente_idx_f51e9825\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Venda_idCliente_idx_f51e9825\"",
+        "sql": "CREATE INDEX \"Venda_idCliente_idx_f51e9825\" ON \"public\".\"Venda\" (\"idCliente\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Venda_idCliente_idx_f51e9825\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Venda_idCliente_idx_f51e9825\""]
+      }
+    ]
+  },
+  {
+    "id": "index.Venda.Venda_idFormaPgto_idx_1e5a0c4a",
+    "label": "Create index \"Venda_idFormaPgto_idx_1e5a0c4a\" on \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Venda_idFormaPgto_idx_1e5a0c4a",
+        "table": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Venda_idFormaPgto_idx_1e5a0c4a\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Venda_idFormaPgto_idx_1e5a0c4a\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Venda_idFormaPgto_idx_1e5a0c4a\"",
+        "sql": "CREATE INDEX \"Venda_idFormaPgto_idx_1e5a0c4a\" ON \"public\".\"Venda\" (\"idFormaPgto\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Venda_idFormaPgto_idx_1e5a0c4a\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Venda_idFormaPgto_idx_1e5a0c4a\""]
+      }
+    ]
+  },
+  {
+    "id": "index.Venda.Venda_idFuncionario_idx_a3fb447f",
+    "label": "Create index \"Venda_idFuncionario_idx_a3fb447f\" on \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "Venda_idFuncionario_idx_a3fb447f",
+        "table": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"Venda_idFuncionario_idx_a3fb447f\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"Venda_idFuncionario_idx_a3fb447f\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"Venda_idFuncionario_idx_a3fb447f\"",
+        "sql": "CREATE INDEX \"Venda_idFuncionario_idx_a3fb447f\" ON \"public\".\"Venda\" (\"idFuncionario\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"Venda_idFuncionario_idx_a3fb447f\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"Venda_idFuncionario_idx_a3fb447f\""]
+      }
+    ]
+  },
+  {
+    "id": "index.item_venda.item_venda_idProduto_idx_5613a5d0",
+    "label": "Create index \"item_venda_idProduto_idx_5613a5d0\" on \"item_venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "item_venda_idProduto_idx_5613a5d0",
+        "table": "item_venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"item_venda_idProduto_idx_5613a5d0\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"item_venda_idProduto_idx_5613a5d0\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"item_venda_idProduto_idx_5613a5d0\"",
+        "sql": "CREATE INDEX \"item_venda_idProduto_idx_5613a5d0\" ON \"public\".\"item_venda\" (\"idProduto\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"item_venda_idProduto_idx_5613a5d0\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"item_venda_idProduto_idx_5613a5d0\""]
+      }
+    ]
+  },
+  {
+    "id": "index.item_venda.item_venda_idVenda_idx_7d9ee885",
+    "label": "Create index \"item_venda_idVenda_idx_7d9ee885\" on \"item_venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "item_venda_idVenda_idx_7d9ee885",
+        "table": "item_venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"item_venda_idVenda_idx_7d9ee885\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": ["\"public\".\"item_venda_idVenda_idx_7d9ee885\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"item_venda_idVenda_idx_7d9ee885\"",
+        "sql": "CREATE INDEX \"item_venda_idVenda_idx_7d9ee885\" ON \"public\".\"item_venda\" (\"idVenda\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"item_venda_idVenda_idx_7d9ee885\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": ["\"public\".\"item_venda_idVenda_idx_7d9ee885\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Funcionario.FK_idUsuario",
+    "label": "Add foreign key \"FK_idUsuario\" on \"Funcionario\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "FK_idUsuario",
+        "table": "Funcionario"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"FK_idUsuario\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idUsuario", "public", "\"public\".\"Funcionario\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"FK_idUsuario\"",
+        "sql": "ALTER TABLE \"public\".\"Funcionario\"\nADD CONSTRAINT \"FK_idUsuario\"\nFOREIGN KEY (\"idUsuario\")\nREFERENCES \"public\".\"Login\" (\"iditemUsuario\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"FK_idUsuario\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idUsuario", "public", "\"public\".\"Funcionario\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Produto.FK_idCategoria",
+    "label": "Add foreign key \"FK_idCategoria\" on \"Produto\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "FK_idCategoria",
+        "table": "Produto"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"FK_idCategoria\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idCategoria", "public", "\"public\".\"Produto\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"FK_idCategoria\"",
+        "sql": "ALTER TABLE \"public\".\"Produto\"\nADD CONSTRAINT \"FK_idCategoria\"\nFOREIGN KEY (\"idCategoria\")\nREFERENCES \"public\".\"Tipo_produto\" (\"idCategoria\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"FK_idCategoria\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idCategoria", "public", "\"public\".\"Produto\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Venda.FK_idCliente",
+    "label": "Add foreign key \"FK_idCliente\" on \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "FK_idCliente",
+        "table": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"FK_idCliente\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idCliente", "public", "\"public\".\"Venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"FK_idCliente\"",
+        "sql": "ALTER TABLE \"public\".\"Venda\"\nADD CONSTRAINT \"FK_idCliente\"\nFOREIGN KEY (\"idCliente\")\nREFERENCES \"public\".\"Cliente\" (\"idCliente\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"FK_idCliente\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idCliente", "public", "\"public\".\"Venda\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Venda.FK_idFuncionario",
+    "label": "Add foreign key \"FK_idFuncionario\" on \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "FK_idFuncionario",
+        "table": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"FK_idFuncionario\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idFuncionario", "public", "\"public\".\"Venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"FK_idFuncionario\"",
+        "sql": "ALTER TABLE \"public\".\"Venda\"\nADD CONSTRAINT \"FK_idFuncionario\"\nFOREIGN KEY (\"idFuncionario\")\nREFERENCES \"public\".\"Funcionario\" (\"idFunconario\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"FK_idFuncionario\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idFuncionario", "public", "\"public\".\"Venda\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.Venda.FK_idFormaPgto",
+    "label": "Add foreign key \"FK_idFormaPgto\" on \"Venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "FK_idFormaPgto",
+        "table": "Venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"FK_idFormaPgto\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idFormaPgto", "public", "\"public\".\"Venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"FK_idFormaPgto\"",
+        "sql": "ALTER TABLE \"public\".\"Venda\"\nADD CONSTRAINT \"FK_idFormaPgto\"\nFOREIGN KEY (\"idFormaPgto\")\nREFERENCES \"public\".\"Login\" (\"iditemUsuario\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"FK_idFormaPgto\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["FK_idFormaPgto", "public", "\"public\".\"Venda\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.item_venda.item_venda_idVenda_fkey",
+    "label": "Add foreign key \"item_venda_idVenda_fkey\" on \"item_venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "item_venda_idVenda_fkey",
+        "table": "item_venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"item_venda_idVenda_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["item_venda_idVenda_fkey", "public", "\"public\".\"item_venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"item_venda_idVenda_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"item_venda\"\nADD CONSTRAINT \"item_venda_idVenda_fkey\"\nFOREIGN KEY (\"idVenda\")\nREFERENCES \"public\".\"Venda\" (\"idVenda\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"item_venda_idVenda_fkey\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["item_venda_idVenda_fkey", "public", "\"public\".\"item_venda\""]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.item_venda.item_venda_idProduto_fkey",
+    "label": "Add foreign key \"item_venda_idProduto_fkey\" on \"item_venda\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "item_venda_idProduto_fkey",
+        "table": "item_venda"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"item_venda_idProduto_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["item_venda_idProduto_fkey", "public", "\"public\".\"item_venda\""]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"item_venda_idProduto_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"item_venda\"\nADD CONSTRAINT \"item_venda_idProduto_fkey\"\nFOREIGN KEY (\"idProduto\")\nREFERENCES \"public\".\"Produto\" (\"idProduto\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"item_venda_idProduto_fkey\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": ["item_venda_idProduto_fkey", "public", "\"public\".\"item_venda\""]
+      }
+    ]
+  }
+]

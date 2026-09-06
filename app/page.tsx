@@ -5,32 +5,46 @@ import { Input } from './_components/ui/input'
 import { Button } from './_components/ui/button'
 import { Card, CardContent } from './_components/ui/card'
 import { Badge } from './_components/ui/badge'
-import { SearchIcon } from 'lucide-react'
+import { SearchIcon, HeartIcon } from 'lucide-react'
 import Image from 'next/image'
+import { db, connectDatabase } from '@/src/prisma/db'
 
-const products = [
-  {
-    id: 1,
-    name: 'Buquê de Rosas',
-    price: 'R$ 50,00',
-    image: '/produtos/01.avif',
-    badge: 'Mais Vendido',
-  },
-  { id: 2, name: 'Ramo de Lírio', price: 'R$ 45,00', image: '/produtos/02.avif', badge: 'Novo' },
-  { id: 3, name: 'Arranjo Tropical', price: 'R$ 65,00', image: '/produtos/03.avif', badge: '' },
-  {
-    id: 4,
-    name: 'Cesta com Flores',
-    price: 'R$ 80,00',
-    image: '/produtos/04.avif',
-    badge: 'Promoção',
-  },
-  { id: 5, name: 'Orquídea Branca', price: 'R$ 55,00', image: '/produtos/05.avif', badge: '' },
-  { id: 6, name: 'Girassóis', price: 'R$ 40,00', image: '/produtos/06.avif', badge: '' },
-  { id: 7, name: 'Mix de Flores', price: 'R$ 70,00', image: '/produtos/07.avif', badge: 'Novo' },
-]
+type Product = {
+  id: number
+  name: string
+  price: number
+  originalPrice: number | null
+  parcelas: number
+  image: string
+  badge: string
+}
 
-export default function Home() {
+const formatCurrency = (value: number): string => {
+  return value.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+}
+
+const getInstallmentText = (price: number, parcelas: number): string => {
+  if (parcelas <= 1) return ''
+  const installmentValue = price / parcelas
+  return `${parcelas}x de ${formatCurrency(installmentValue)} sem juros`
+}
+
+export default async function Home() {
+  await connectDatabase()
+  const produtos = await db.orm.public.Produto.all()
+  const products: Product[] = produtos.map((p) => ({
+    id: p.idProduto,
+    name: p.descricao,
+    price: p.preco,
+    originalPrice: p.precoOriginal,
+    parcelas: p.parcelas ?? 1,
+    image: `/produtos/${String(p.idProduto).padStart(2, '0')}.avif`,
+    badge: '',
+  }))
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -45,6 +59,37 @@ export default function Home() {
             <Input placeholder="Pesquisar..." className="flex-1" />
             <Button className="shrink-0">
               <SearchIcon className="size-4" />
+            </Button>
+          </div>
+
+          <div className="mt-6 flex items-center gap-2 overflow-x-auto">
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/arranjo.svg" alt="arranjo" width={16} height={16} />
+              Arranjos
+            </Button>
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/bouquet.svg" alt="bouquet" width={16} height={16} />
+              Bouquets
+            </Button>
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/cesta.svg" alt="cesta" width={16} height={16} />
+              Cestas
+            </Button>
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/girassol.svg" alt="girassol" width={16} height={16} />
+              Girassóis
+            </Button>
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/mix.svg" alt="mix" width={16} height={16} />
+              Mix
+            </Button>
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/orquidia.svg" alt="orquidia" width={16} height={16} />
+              Orquídias
+            </Button>
+            <Button className="shrink-0 gap-2" variant="secondary">
+              <Image src="/svg/ramo.svg" alt="ramo" width={16} height={16} />
+              Ramos
             </Button>
           </div>
 
@@ -64,6 +109,9 @@ export default function Home() {
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                         className="object-cover"
                       />
+                      <button className="absolute top-1 left-1 rounded-full bg-white/80 p-1 transition-colors hover:bg-white sm:top-2 sm:left-2 sm:p-1.5">
+                        <HeartIcon className="size-4 text-purple-700 sm:size-5" />
+                      </button>
                       {product.badge && (
                         <Badge className="absolute top-1 right-1 text-[10px] text-white sm:top-2 sm:right-2 sm:text-xs">
                           {product.badge}
@@ -72,9 +120,19 @@ export default function Home() {
                     </div>
                     <div className="p-2 sm:p-3">
                       <p className="text-center text-xs font-medium sm:text-sm">{product.name}</p>
-                      <p className="text-muted-foreground text-center text-xs sm:text-sm">
-                        {product.price}
+                      {product.originalPrice && (
+                        <p className="text-center text-xs text-gray-400 line-through">
+                          {formatCurrency(product.originalPrice)}
+                        </p>
+                      )}
+                      <p className="text-center text-xs font-bold text-purple-700 sm:text-sm">
+                        Por {formatCurrency(product.price)}
                       </p>
+                      {getInstallmentText(product.price, product.parcelas) && (
+                        <p className="text-center text-[10px] text-gray-500 sm:text-xs">
+                          em até {getInstallmentText(product.price, product.parcelas)}
+                        </p>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

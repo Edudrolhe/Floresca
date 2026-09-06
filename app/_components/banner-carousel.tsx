@@ -46,8 +46,8 @@ const BannerCarousel = () => {
   const next = () => setCurrent((c) => (c + 1) % slides.length)
 
   return (
-    <div className="relative mt-4 overflow-hidden rounded-xl sm:mt-6 sm:rounded-2xl">
-      <div className="relative aspect-[3/1] sm:aspect-[3/1]">
+    <div className="group/carousel relative mt-4 overflow-hidden rounded-xl sm:mt-6 sm:rounded-2xl">
+      <div className="relative aspect-3/1 sm:aspect-3/1">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -63,7 +63,7 @@ const BannerCarousel = () => {
               className="object-cover"
               priority={index === 0}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-4 left-4 text-white sm:bottom-6 sm:left-6">
               <h3 className="text-lg font-bold sm:text-2xl">{slide.title}</h3>
               <p className="text-xs sm:text-sm">{slide.subtitle}</p>
@@ -75,7 +75,7 @@ const BannerCarousel = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-1/2 left-2 -translate-y-1/2 bg-white/80 text-black hover:bg-white sm:left-3"
+        className="absolute top-1/2 left-2 -translate-y-1/2 bg-white/80 text-black opacity-0 transition-opacity group-hover/carousel:opacity-100 hover:bg-white sm:left-3"
         onClick={prev}
       >
         <ChevronLeftIcon className="size-5" />
@@ -83,13 +83,13 @@ const BannerCarousel = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-1/2 right-2 -translate-y-1/2 bg-white/80 text-black hover:bg-white sm:right-3"
+        className="absolute top-1/2 right-2 -translate-y-1/2 bg-white/80 text-black opacity-0 transition-opacity group-hover/carousel:opacity-100 hover:bg-white sm:right-3"
         onClick={next}
       >
         <ChevronRightIcon className="size-5" />
       </Button>
 
-      <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5 sm:bottom-3">
+      <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5 opacity-0 transition-opacity group-hover/carousel:opacity-100 sm:bottom-3">
         {slides.map((_, index) => (
           <button
             key={index}

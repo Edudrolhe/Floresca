@@ -13,14 +13,16 @@ model Cliente {
 }
 
 model Produto {
-  idProduto   Int          @id
-  codBarras   Decimal      @map("cod_Barras")
-  descricao   VarChar(50)
-  categoria   VarChar(50)
-  quantidade  Int
-  preco       Float
-  idCategoria Int?
-  tipoProduto TipoProduto? @relation(fields: [idCategoria], references: [idCategoria], map: "FK_idCategoria")
+  idProduto     Int          @id
+  codBarras     Decimal      @map("cod_Barras")
+  descricao     VarChar(50)
+  categoria     VarChar(50)
+  quantidade    Int
+  preco         Float
+  precoOriginal Float?       @map("preco_original")
+  parcelas      Int?         @default(1)
+  idCategoria   Int?
+  tipoProduto   TipoProduto? @relation(fields: [idCategoria], references: [idCategoria], map: "FK_idCategoria")
 
   @@map("Produto")
 }
@@ -52,7 +54,6 @@ model Login {
   iditemUsuario Int           @id
   descricao     VarChar(50)
   funcionarios  Funcionario[]
-  vendas        Venda[]
 
   @@map("Login")
 }
@@ -79,7 +80,7 @@ model Venda {
   idCliente     Int?
   cliente       Cliente?    @relation(fields: [idCliente], references: [idCliente], map: "FK_idCliente")
   funcionario   Funcionario @relation(fields: [idFuncionario], references: [idFuncionario], map: "FK_idFuncionario")
-  formaPagto    Login       @relation(fields: [idFormaPgto], references: [iditemUsuario], map: "FK_idFormaPgto")
+  formaPagto    FormaPagto  @relation(fields: [idFormaPgto], references: [idFormaPgto], map: "FK_idFormaPgto")
   itens         ItemVenda[]
 
   @@map("Venda")

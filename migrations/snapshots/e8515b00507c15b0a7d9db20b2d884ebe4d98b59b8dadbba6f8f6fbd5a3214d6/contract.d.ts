@@ -33,7 +33,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types'
 
 export type StorageHash =
-  StorageHashBase<'a7d3b4bd42654a8fba4315ac0b549eb9121050e64a582c2eb6d7045762227d3f'>
+  StorageHashBase<'e8515b00507c15b0a7d9db20b2d884ebe4d98b59b8dadbba6f8f6fbd5a3214d6'>
 export type ExecutionHash = ExecutionHashBase<string>
 export type ProfileHash =
   ProfileHashBase<'3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2'>
@@ -911,8 +911,8 @@ type ContractBase = Omit<
                   }
                   readonly target: {
                     readonly namespaceId: 'public' & NamespaceId
-                    readonly tableName: 'FormaPagto'
-                    readonly columns: readonly ['idFormaPgto']
+                    readonly tableName: 'Login'
+                    readonly columns: readonly ['iditemUsuario']
                   }
                   readonly name: 'FK_idFormaPgto'
                 },
@@ -1213,6 +1213,17 @@ type ContractBase = Omit<
                   readonly targetFields: readonly ['idUsuario']
                 }
               }
+              readonly vendas: {
+                readonly to: {
+                  readonly namespace: 'public' & NamespaceId
+                  readonly model: 'Venda'
+                }
+                readonly cardinality: '1:N'
+                readonly on: {
+                  readonly localFields: readonly ['iditemUsuario']
+                  readonly targetFields: readonly ['idFormaPgto']
+                }
+              }
             }
             readonly storage: {
               readonly table: 'Login'
@@ -1394,12 +1405,12 @@ type ContractBase = Omit<
               readonly formaPagto: {
                 readonly to: {
                   readonly namespace: 'public' & NamespaceId
-                  readonly model: 'FormaPagto'
+                  readonly model: 'Login'
                 }
                 readonly cardinality: 'N:1'
                 readonly on: {
                   readonly localFields: readonly ['idFormaPgto']
-                  readonly targetFields: readonly ['idFormaPgto']
+                  readonly targetFields: readonly ['iditemUsuario']
                 }
               }
               readonly funcionario: {
