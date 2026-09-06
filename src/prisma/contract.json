@@ -105,12 +105,8 @@
               "vendas": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "idCliente"
-                  ],
-                  "targetFields": [
-                    "idCliente"
-                  ]
+                  "localFields": ["idCliente"],
+                  "targetFields": ["idCliente"]
                 },
                 "to": {
                   "model": "Venda",
@@ -252,12 +248,8 @@
               "login": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idUsuario"
-                  ],
-                  "targetFields": [
-                    "iditemUsuario"
-                  ]
+                  "localFields": ["idUsuario"],
+                  "targetFields": ["iditemUsuario"]
                 },
                 "to": {
                   "model": "Login",
@@ -267,12 +259,8 @@
               "vendas": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "idFuncionario"
-                  ],
-                  "targetFields": [
-                    "idFuncionario"
-                  ]
+                  "localFields": ["idFuncionario"],
+                  "targetFields": ["idFuncionario"]
                 },
                 "to": {
                   "model": "Venda",
@@ -332,12 +320,8 @@
               "produto": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idProduto"
-                  ],
-                  "targetFields": [
-                    "idProduto"
-                  ]
+                  "localFields": ["idProduto"],
+                  "targetFields": ["idProduto"]
                 },
                 "to": {
                   "model": "Produto",
@@ -347,12 +331,8 @@
               "venda": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idVenda"
-                  ],
-                  "targetFields": [
-                    "idVenda"
-                  ]
+                  "localFields": ["idVenda"],
+                  "targetFields": ["idVenda"]
                 },
                 "to": {
                   "model": "Venda",
@@ -397,12 +377,8 @@
               "funcionarios": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "iditemUsuario"
-                  ],
-                  "targetFields": [
-                    "idUsuario"
-                  ]
+                  "localFields": ["iditemUsuario"],
+                  "targetFields": ["idUsuario"]
                 },
                 "to": {
                   "model": "Funcionario",
@@ -412,12 +388,8 @@
               "vendas": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "iditemUsuario"
-                  ],
-                  "targetFields": [
-                    "idFormaPgto"
-                  ]
+                  "localFields": ["iditemUsuario"],
+                  "targetFields": ["idFormaPgto"]
                 },
                 "to": {
                   "model": "Venda",
@@ -500,12 +472,8 @@
               "tipoProduto": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idCategoria"
-                  ],
-                  "targetFields": [
-                    "idCategoria"
-                  ]
+                  "localFields": ["idCategoria"],
+                  "targetFields": ["idCategoria"]
                 },
                 "to": {
                   "model": "TipoProduto",
@@ -565,12 +533,8 @@
               "produtos": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "idCategoria"
-                  ],
-                  "targetFields": [
-                    "idCategoria"
-                  ]
+                  "localFields": ["idCategoria"],
+                  "targetFields": ["idCategoria"]
                 },
                 "to": {
                   "model": "Produto",
@@ -664,12 +628,8 @@
               "cliente": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idCliente"
-                  ],
-                  "targetFields": [
-                    "idCliente"
-                  ]
+                  "localFields": ["idCliente"],
+                  "targetFields": ["idCliente"]
                 },
                 "to": {
                   "model": "Cliente",
@@ -679,12 +639,8 @@
               "formaPagto": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idFormaPgto"
-                  ],
-                  "targetFields": [
-                    "iditemUsuario"
-                  ]
+                  "localFields": ["idFormaPgto"],
+                  "targetFields": ["iditemUsuario"]
                 },
                 "to": {
                   "model": "Login",
@@ -694,12 +650,8 @@
               "funcionario": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": [
-                    "idFuncionario"
-                  ],
-                  "targetFields": [
-                    "idFuncionario"
-                  ]
+                  "localFields": ["idFuncionario"],
+                  "targetFields": ["idFuncionario"]
                 },
                 "to": {
                   "model": "Funcionario",
@@ -709,12 +661,8 @@
               "itens": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": [
-                    "idVenda"
-                  ],
-                  "targetFields": [
-                    "idVenda"
-                  ]
+                  "localFields": ["idVenda"],
+                  "targetFields": ["idVenda"]
                 },
                 "to": {
                   "model": "ItemVenda",
@@ -816,9 +764,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "idCliente"
-                ]
+                "columns": ["idCliente"]
               },
               "uniques": []
             },
@@ -841,9 +787,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "idFormaPgto"
-                ]
+                "columns": ["idFormaPgto"]
               },
               "uniques": []
             },
@@ -906,16 +850,12 @@
                 {
                   "name": "FK_idUsuario",
                   "source": {
-                    "columns": [
-                      "idUsuario"
-                    ],
+                    "columns": ["idUsuario"],
                     "namespaceId": "public",
                     "tableName": "Funcionario"
                   },
                   "target": {
-                    "columns": [
-                      "iditemUsuario"
-                    ],
+                    "columns": ["iditemUsuario"],
                     "namespaceId": "public",
                     "tableName": "Login"
                   }
@@ -923,18 +863,14 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "idUsuario"
-                  ],
+                  "columns": ["idUsuario"],
                   "name": "Funcionario_idUsuario_idx_2255b915",
                   "prefix": "Funcionario_idUsuario_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "idFunconario"
-                ]
+                "columns": ["idFunconario"]
               },
               "uniques": []
             },
@@ -957,9 +893,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "iditemUsuario"
-                ]
+                "columns": ["iditemUsuario"]
               },
               "uniques": []
             },
@@ -1011,16 +945,12 @@
                 {
                   "name": "FK_idCategoria",
                   "source": {
-                    "columns": [
-                      "idCategoria"
-                    ],
+                    "columns": ["idCategoria"],
                     "namespaceId": "public",
                     "tableName": "Produto"
                   },
                   "target": {
-                    "columns": [
-                      "idCategoria"
-                    ],
+                    "columns": ["idCategoria"],
                     "namespaceId": "public",
                     "tableName": "Tipo_produto"
                   }
@@ -1028,18 +958,14 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "idCategoria"
-                  ],
+                  "columns": ["idCategoria"],
                   "name": "Produto_idCategoria_idx_430ced79",
                   "prefix": "Produto_idCategoria_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "idProduto"
-                ]
+                "columns": ["idProduto"]
               },
               "uniques": []
             },
@@ -1062,9 +988,7 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": [
-                  "idCategoria"
-                ]
+                "columns": ["idCategoria"]
               },
               "uniques": []
             },
@@ -1123,16 +1047,12 @@
                 {
                   "name": "FK_idCliente",
                   "source": {
-                    "columns": [
-                      "idCliente"
-                    ],
+                    "columns": ["idCliente"],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   },
                   "target": {
-                    "columns": [
-                      "idCliente"
-                    ],
+                    "columns": ["idCliente"],
                     "namespaceId": "public",
                     "tableName": "Cliente"
                   }
@@ -1140,16 +1060,12 @@
                 {
                   "name": "FK_idFuncionario",
                   "source": {
-                    "columns": [
-                      "idFuncionario"
-                    ],
+                    "columns": ["idFuncionario"],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   },
                   "target": {
-                    "columns": [
-                      "idFunconario"
-                    ],
+                    "columns": ["idFunconario"],
                     "namespaceId": "public",
                     "tableName": "Funcionario"
                   }
@@ -1157,16 +1073,12 @@
                 {
                   "name": "FK_idFormaPgto",
                   "source": {
-                    "columns": [
-                      "idFormaPgto"
-                    ],
+                    "columns": ["idFormaPgto"],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   },
                   "target": {
-                    "columns": [
-                      "iditemUsuario"
-                    ],
+                    "columns": ["iditemUsuario"],
                     "namespaceId": "public",
                     "tableName": "Login"
                   }
@@ -1174,34 +1086,26 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "idCliente"
-                  ],
+                  "columns": ["idCliente"],
                   "name": "Venda_idCliente_idx_f51e9825",
                   "prefix": "Venda_idCliente_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "idFormaPgto"
-                  ],
+                  "columns": ["idFormaPgto"],
                   "name": "Venda_idFormaPgto_idx_1e5a0c4a",
                   "prefix": "Venda_idFormaPgto_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "idFuncionario"
-                  ],
+                  "columns": ["idFuncionario"],
                   "name": "Venda_idFuncionario_idx_a3fb447f",
                   "prefix": "Venda_idFuncionario_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "idVenda"
-                ]
+                "columns": ["idVenda"]
               },
               "uniques": []
             },
@@ -1221,32 +1125,24 @@
               "foreignKeys": [
                 {
                   "source": {
-                    "columns": [
-                      "idVenda"
-                    ],
+                    "columns": ["idVenda"],
                     "namespaceId": "public",
                     "tableName": "item_venda"
                   },
                   "target": {
-                    "columns": [
-                      "idVenda"
-                    ],
+                    "columns": ["idVenda"],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   }
                 },
                 {
                   "source": {
-                    "columns": [
-                      "idProduto"
-                    ],
+                    "columns": ["idProduto"],
                     "namespaceId": "public",
                     "tableName": "item_venda"
                   },
                   "target": {
-                    "columns": [
-                      "idProduto"
-                    ],
+                    "columns": ["idProduto"],
                     "namespaceId": "public",
                     "tableName": "Produto"
                   }
@@ -1254,27 +1150,20 @@
               ],
               "indexes": [
                 {
-                  "columns": [
-                    "idProduto"
-                  ],
+                  "columns": ["idProduto"],
                   "name": "item_venda_idProduto_idx_5613a5d0",
                   "prefix": "item_venda_idProduto_idx",
                   "unique": false
                 },
                 {
-                  "columns": [
-                    "idVenda"
-                  ],
+                  "columns": ["idVenda"],
                   "name": "item_venda_idVenda_idx_7d9ee885",
                   "prefix": "item_venda_idVenda_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": [
-                  "idVenda",
-                  "idProduto"
-                ]
+                "columns": ["idVenda", "idProduto"]
               },
               "uniques": []
             }

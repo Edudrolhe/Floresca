@@ -66,18 +66,18 @@ type ContractUnderTest = Contract<
   SqlStorage<string> & {
     readonly namespaces: {
       readonly __unbound__: {
-        readonly id: '__unbound__';
+        readonly id: '__unbound__'
         readonly tables: {
           readonly user: {
             // ... columns, primaryKey, etc.
-          };
-        };
-      };
-    };
-    readonly storageHash: StorageHash;
-  },
+          }
+        }
+      }
+    }
+    readonly storageHash: StorageHash
+  }
   // ...
->;
+>
 ```
 
 ### Starting at 0.11
@@ -87,28 +87,28 @@ type ContractUnderTest = Contract<
   SqlStorage<string> & {
     readonly namespaces: {
       readonly __unbound__: {
-        readonly id: '__unbound__';
-        readonly kind: 'sql-namespace'; // ← new: required
+        readonly id: '__unbound__'
+        readonly kind: 'sql-namespace' // ← new: required
         readonly tables: {
           readonly user: {
             // ... columns, primaryKey, etc.
-          };
-        };
-      };
-    };
-    readonly storageHash: StorageHash;
-  },
+          }
+        }
+      }
+    }
+    readonly storageHash: StorageHash
+  }
   // ...
->;
+>
 ```
 
 ### Mapping table
 
-| Namespace family | Discriminator literal | Where it surfaces in handcrafted types |
-|---|---|---|
-| SQL (`SqlNamespace`, `SqlUnboundNamespace`) | `'sql-namespace'` | Anywhere you write `Contract<{ namespaces: { … } }>` with a SQL-style namespace |
-| Mongo (`MongoNamespace`, `MongoUnboundNamespace`) | `'mongo-namespace'` | Anywhere you write `Contract<{ namespaces: { … } }>` with a Mongo-style namespace |
-| Postgres (`PostgresSchema`, when handcrafted) | `'postgres-schema'` or `'postgres-unbound-schema'` | Rare in extension code; only needed if you handcraft a literal with a Postgres-specific namespace class |
+| Namespace family                                  | Discriminator literal                              | Where it surfaces in handcrafted types                                                                  |
+| ------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| SQL (`SqlNamespace`, `SqlUnboundNamespace`)       | `'sql-namespace'`                                  | Anywhere you write `Contract<{ namespaces: { … } }>` with a SQL-style namespace                         |
+| Mongo (`MongoNamespace`, `MongoUnboundNamespace`) | `'mongo-namespace'`                                | Anywhere you write `Contract<{ namespaces: { … } }>` with a Mongo-style namespace                       |
+| Postgres (`PostgresSchema`, when handcrafted)     | `'postgres-schema'` or `'postgres-unbound-schema'` | Rare in extension code; only needed if you handcraft a literal with a Postgres-specific namespace class |
 
 ### Detection
 
@@ -139,8 +139,8 @@ Starting at the 0.11 release the three official facades (`postgres()`, `sqlite()
 ```typescript
 interface ClientFacade {
   // ...existing surface...
-  close(): Promise<void>;
-  [Symbol.asyncDispose](): Promise<void>;
+  close(): Promise<void>
+  [Symbol.asyncDispose](): Promise<void>
 }
 ```
 
@@ -148,7 +148,7 @@ This is the surface that lets a short-lived script (`tsx my-script.ts`) release 
 
 If your extension exposes a facade in the same shape (e.g. you publish your own `postgresServerless()` or `someDriver()` factory that returns the same client object), add the equivalent surface. Three load-bearing properties:
 
-1. **Ownership rule.** `close()` releases only the resources the facade *itself* constructed. A `{ url }` (or similar opaque-string) binding means the facade opened the connection — facade owns it, `close()` disposes it. A `{ pool }` / `{ client }` / `{ mongoClient }` (caller-supplied opaque-handle) binding means the caller owns it — `close()` leaves it untouched. The facade must capture this ownership decision at construction time and remember it.
+1. **Ownership rule.** `close()` releases only the resources the facade _itself_ constructed. A `{ url }` (or similar opaque-string) binding means the facade opened the connection — facade owns it, `close()` disposes it. A `{ pool }` / `{ client }` / `{ mongoClient }` (caller-supplied opaque-handle) binding means the caller owns it — `close()` leaves it untouched. The facade must capture this ownership decision at construction time and remember it.
 
 2. **Idempotence.** `close()` can be called multiple times in a row without throwing. The second and later calls are no-ops.
 
@@ -207,19 +207,17 @@ Starting at the 0.11 release, the `.insert()` method on the SQL builder accepts 
 Before 0.11:
 
 ```ts
-const ast = InsertAst.into(TableSource.named(tableName))
-  .insert({ field: value });
+const ast = InsertAst.into(TableSource.named(tableName)).insert({ field: value })
 // or via the query builder:
-db.sql.table.insert({ field: value }).build();
+db.sql.table.insert({ field: value }).build()
 ```
 
 Starting at 0.11:
 
 ```ts
-const ast = InsertAst.into(TableSource.named(tableName))
-  .insert([{ field: value }]);
+const ast = InsertAst.into(TableSource.named(tableName)).insert([{ field: value }])
 // or via the query builder:
-db.sql.table.insert([{ field: value }]).build();
+db.sql.table.insert([{ field: value }]).build()
 ```
 
 Walk every `.ts` / `.tsx` file matched by the `detection.glob` above. For each call site that passes a plain object directly to `.insert(...)`, wrap the argument in an array:
@@ -231,9 +229,9 @@ Variable references to a row object are safe to wrap directly:
 
 ```ts
 // Before
-await runtime.execute(db.sql.table.insert(row).build());
+await runtime.execute(db.sql.table.insert(row).build())
 // After
-await runtime.execute(db.sql.table.insert([row]).build());
+await runtime.execute(db.sql.table.insert([row]).build())
 ```
 
 If a call site already passes an array (`.insert([row1, row2])`), it is already correct — leave it unchanged.
@@ -249,7 +247,7 @@ Before 0.11:
 ```ts
 const ast = InsertAst.into(TableSource.named(tableName))
   .withValues(createAssignments.assignments)
-  .withOnConflict(onConflict);
+  .withOnConflict(onConflict)
 ```
 
 Starting at 0.11:
@@ -257,10 +255,11 @@ Starting at 0.11:
 ```ts
 const ast = InsertAst.into(TableSource.named(tableName))
   .withRows([createAssignments.assignments])
-  .withOnConflict(onConflict);
+  .withOnConflict(onConflict)
 ```
 
 The change is:
+
 - Replace `.withValues(expr)` with `.withRows([expr])` — the single-row overload is removed; `withRows` accepts an array of assignment maps.
 
 Walk every `.ts` / `.tsx` file matched by the `detection.glob` above. For each call site matching `.withValues(`, apply the replacement. The argument remains a single expression; it just needs to be wrapped in an array.
@@ -271,6 +270,6 @@ After applying the rules above, run `pnpm typecheck && pnpm test` (or your exten
 
 ## Validation by execution
 
-These entries are prose-only (no scripts). The substrate diff on `packages/3-extensions/` is additive (new methods on the three official facades) plus the Mongo behaviour change documented above; the `namespace-kind-required-on-handcrafted-contract-literals` entry covers a type-only tightening with no runtime substrate transform. There is no codemod to apply against a reverted substrate — the framework changes *are* the new surfaces, and these instructions describe the consumer-side translation, not a substrate transform.
+These entries are prose-only (no scripts). The substrate diff on `packages/3-extensions/` is additive (new methods on the three official facades) plus the Mongo behaviour change documented above; the `namespace-kind-required-on-handcrafted-contract-literals` entry covers a type-only tightening with no runtime substrate transform. There is no codemod to apply against a reverted substrate — the framework changes _are_ the new surfaces, and these instructions describe the consumer-side translation, not a substrate transform.
 
 The release-pipeline gate (`pnpm check:upgrade-coverage`) is satisfied by this directory existing with at least one entry. The substantive verification of the consumer-facing translation lives in the published skill's per-step bump-install-instructions-validate-commit loop, which runs in extension authors' own CI.

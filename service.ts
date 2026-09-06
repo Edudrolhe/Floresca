@@ -1,13 +1,13 @@
-import nextjs from "@prisma/composer/nextjs";
-import { compute } from "@prisma/composer-prisma-cloud";
-import { postgres } from "@prisma/composer-prisma-cloud/orm";
+import nextjs from '@prisma/composer/nextjs'
+import { compute } from '@prisma/composer-prisma-cloud'
+import { postgres } from '@prisma/composer-prisma-cloud/orm'
 
-import { appContract } from "./src/prisma/composer.ts";
+import { appContract } from './src/prisma/composer.ts'
 
 export default compute({
-  name: "app",
+  name: 'app',
   deps: {
     database: postgres(appContract),
   },
-  build: nextjs({ module: import.meta.url, appDir: "." }),
-});
+  build: nextjs({ module: import.meta.url, appDir: '.' }),
+})

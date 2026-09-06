@@ -1,3 +1,3 @@
-import { defineComposerConfig } from "@prisma/composer/config";
+import { defineComposerConfig } from '@prisma/composer/config'
 
-export default defineComposerConfig({});
+export default defineComposerConfig({})
