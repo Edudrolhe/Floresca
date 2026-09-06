@@ -1,30 +1,89 @@
-import Header from "./_components/header";
-import { Input } from "./_components/ui/input";
-import { Button } from "./_components/ui/button";
-import { SearchIcon } from "lucide-react";
-import Image from "next/image";
+import Header from './_components/header'
+import Footer from './_components/footer'
+import BannerCarousel from './_components/banner-carousel'
+import { Input } from './_components/ui/input'
+import { Button } from './_components/ui/button'
+import { Card, CardContent } from './_components/ui/card'
+import { Badge } from './_components/ui/badge'
+import { SearchIcon } from 'lucide-react'
+import Image from 'next/image'
+
+const products = [
+  {
+    id: 1,
+    name: 'Buquê de Rosas',
+    price: 'R$ 50,00',
+    image: '/produtos/01.avif',
+    badge: 'Mais Vendido',
+  },
+  { id: 2, name: 'Ramo de Lírio', price: 'R$ 45,00', image: '/produtos/02.avif', badge: 'Novo' },
+  { id: 3, name: 'Arranjo Tropical', price: 'R$ 65,00', image: '/produtos/03.avif', badge: '' },
+  {
+    id: 4,
+    name: 'Cesta com Flores',
+    price: 'R$ 80,00',
+    image: '/produtos/04.avif',
+    badge: 'Promoção',
+  },
+  { id: 5, name: 'Orquídea Branca', price: 'R$ 55,00', image: '/produtos/05.avif', badge: '' },
+  { id: 6, name: 'Girassóis', price: 'R$ 40,00', image: '/produtos/06.avif', badge: '' },
+  { id: 7, name: 'Mix de Flores', price: 'R$ 70,00', image: '/produtos/07.avif', badge: 'Novo' },
+]
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <div className="flex-1 px-4 py-2">
-        <h2 className="text-2xl font-bold">Olá, mundo!</h2>
-        <p>Domingo, 07 de setembro de 2026</p>
+      <main className="flex-1">
+        <div className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+          <h2 className="font-bold text-black sm:text-2xl">Olá, mundo!</h2>
+          <p className="text-muted-foreground text-sm sm:text-base">
+            Domingo, 07 de setembro de 2026
+          </p>
 
-        <div className="flex items-center gap-2 mt-6">
-          <Input placeholder="Pesquisar..." />
-          <Button>
-            <SearchIcon />
-          </Button>
-        </div>
+          <div className="mt-4 flex items-center gap-2 sm:mt-6">
+            <Input placeholder="Pesquisar..." className="flex-1" />
+            <Button className="shrink-0">
+              <SearchIcon className="size-4" />
+            </Button>
+          </div>
 
-        <div className=" relative mt-6">
-          <Image src="/Banner.png" alt="Banner"
-           width={800} height={400} 
-           className=" rounded-2xl object-cover" />
+          <BannerCarousel />
+
+          <section className="mt-6 sm:mt-8">
+            <h3 className="font-bold text-black sm:text-xl">Produtos</h3>
+            <div className="mt-3 grid grid-cols-2 gap-3 sm:mt-4 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+              {products.map((product) => (
+                <Card key={product.id} className="overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="relative aspect-square">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                        className="object-cover"
+                      />
+                      {product.badge && (
+                        <Badge className="absolute top-1 right-1 text-[10px] text-white sm:top-2 sm:right-2 sm:text-xs">
+                          {product.badge}
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="p-2 sm:p-3">
+                      <p className="text-center text-xs font-medium sm:text-sm">{product.name}</p>
+                      <p className="text-muted-foreground text-center text-xs sm:text-sm">
+                        {product.price}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
-  );
+  )
 }
