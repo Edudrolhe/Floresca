@@ -1,16 +1,11 @@
-import {
-  MenuIcon,
-  TruckIcon,
-  HeartIcon,
-  ShoppingCartIcon,
-  LogInIcon,
-  LogOutIcon,
-  ShieldIcon,
-} from 'lucide-react'
+import { MenuIcon, TruckIcon, LogInIcon, ShieldIcon } from 'lucide-react'
 import { Button } from './ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
-import { auth, signOut } from '@/src/prisma/auth'
+import { auth } from '@/src/prisma/auth'
+import FavoritesButton from './favorites-button'
+import CartButton from './cart-button'
+import SignOutButton from './sign-out-button'
 
 const Header = async () => {
   const session = await auth()
@@ -31,15 +26,8 @@ const Header = async () => {
             <TruckIcon className="size-4 text-purple-700" />
             <span className="hidden text-black md:inline">Acompanhar Pedido</span>
           </Button>
-          <Button variant="ghost" size="icon" className="relative shrink-0">
-            <HeartIcon className="size-5 text-purple-700" />
-          </Button>
-          <Button variant="ghost" size="icon" className="relative shrink-0">
-            <ShoppingCartIcon className="size-5 text-purple-700" />
-            <span className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-purple-700 text-[10px] text-white">
-              0
-            </span>
-          </Button>
+          <FavoritesButton />
+          <CartButton />
 
           {session ? (
             <>
@@ -48,16 +36,7 @@ const Header = async () => {
                   <ShieldIcon className="size-5 text-purple-700" />
                 </Button>
               </Link>
-              <form
-                action={async () => {
-                  'use server'
-                  await signOut({ redirectTo: '/' })
-                }}
-              >
-                <Button variant="ghost" size="icon" type="submit" className="shrink-0">
-                  <LogOutIcon className="size-5 text-purple-700" />
-                </Button>
-              </form>
+              <SignOutButton />
             </>
           ) : (
             <Link href="/login">

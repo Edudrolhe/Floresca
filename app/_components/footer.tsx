@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import Image from 'next/image'
 import { PhoneIcon, MailIcon, MapPinIcon } from 'lucide-react'
 
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -22,9 +24,17 @@ const Footer = () => {
     <footer className="mt-auto border-t bg-white">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Contato */}
+          {/* Logo e Contato */}
           <div>
-            <h4 className="mb-3 text-sm font-bold text-purple-700">Floricultura na Web</h4>
+            <Link href="/" className="mb-4 inline-block">
+              <Image
+                src="/Logo.png"
+                alt="Floresca Floricultura"
+                width={200}
+                height={50}
+                className="h-auto w-32 sm:w-40"
+              />
+            </Link>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center gap-2">
                 <PhoneIcon className="size-4 shrink-0 text-purple-700" />
