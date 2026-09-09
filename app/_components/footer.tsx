@@ -38,11 +38,11 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-center gap-2">
                 <PhoneIcon className="size-4 shrink-0 text-purple-700" />
-                (47) 3346-6704
+                (47) 3346-3456
               </li>
               <li className="flex items-center gap-2">
                 <PhoneIcon className="size-4 shrink-0 text-purple-700" />
-                (47) 98873-8034 (WhatsApp)
+                (47) 98873-3444 (WhatsApp)
               </li>
               <li className="flex items-center gap-2">
                 <MailIcon className="size-4 shrink-0 text-purple-700" />
@@ -50,7 +50,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <MapPinIcon className="mt-0.5 size-4 shrink-0 text-purple-700" />
-                Vereador Abraão João Francisco, 3686, Ressacada, Itajaí - SC, CEP 88302-100
+                Abraão João Francisco, 3600, Vitória - PE, CEP 88302-134
               </li>
               <li className="flex items-center gap-2">
                 <InstagramIcon className="size-4 shrink-0 text-purple-700" />
@@ -71,26 +71,26 @@ const Footer = () => {
           <div>
             <h4 className="mb-3 text-sm font-bold text-purple-700">Informações</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Balneário Camboriú</li>
-              <li>Itajaí</li>
+              <li>Vitória</li>
+              <li>Pernambuco</li>
             </ul>
           </div>
 
           {/* Formas de Pagamento */}
           <div>
             <h4 className="mb-3 text-sm font-bold text-purple-700">Formas de Pagamento</h4>
+            <Image src="/formaPg.png" alt="Formas de Pagamento" width={200} height={100} />
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Formas de pagamento</li>
             </ul>
             <h4 className="mt-4 mb-3 text-sm font-bold text-purple-700">Certificações</h4>
+            <Image src="/siteSeg.png" alt="Site seguro" width={200} height={100} />
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Certificação SSL</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-8 border-t pt-4 text-center text-xs text-gray-500">
-          © 2024 Floresca Floricultura. Todos os direitos reservados.
+          © 2026 Floresca Floricultura. Todos os direitos reservados.
         </div>
       </div>
     </footer>

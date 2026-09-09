@@ -395,6 +395,23 @@ async function main() {
     },
   })
 
+  // Venda realizada apenas por cliente externo (sem funcionário)
+  await prisma.venda.upsert({
+    where: { idVenda: 5 },
+    update: {},
+    create: {
+      idVenda: 5,
+      dataVenda: new Date('2026-09-06'),
+      produto: 'ORQUIDEA AMOR',
+      quantidade: 1,
+      preco: 165.0,
+      totalVenda: 165.0,
+      idFormaPgto: 5,
+      idFuncionario: null,
+      idCliente: 2,
+    },
+  })
+
   // 8. ItemVenda
   await prisma.itemVenda.upsert({
     where: { idVenda_idProduto: { idVenda: 1, idProduto: 1 } },

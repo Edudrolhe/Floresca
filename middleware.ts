@@ -3,7 +3,7 @@ import { auth } from '@/src/prisma/auth'
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth
-  const userRole = (req.auth?.user as any)?.role
+  const userRole = req.auth?.user?.role
   const isAdmin = userRole === 'admin' || userRole === 'employee'
 
   if (req.nextUrl.pathname.startsWith('/admin')) {

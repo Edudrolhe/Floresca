@@ -588,7 +588,7 @@
                 }
               },
               "idFuncionario": {
-                "nullable": false,
+                "nullable": true,
                 "type": {
                   "codecId": "pg/int4@1",
                   "kind": "scalar"

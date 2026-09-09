@@ -11,21 +11,21 @@ import {
   DialogHeader,
   DialogTitle,
 } from '../ui/dialog'
-import { deleteFuncionario } from '@/app/_lib/actions/funcionarios'
+import { deleteVenda } from '@/app/_lib/actions/vendas'
 
-type DeleteFuncionarioDialogProps = {
-  funcionarioId: number
-  funcionarioName: string
+type DeleteVendaDialogProps = {
+  vendaId: number
+  vendaProduto: string
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-export function DeleteFuncionarioDialog({
-  funcionarioId,
-  funcionarioName,
+export function DeleteVendaDialog({
+  vendaId,
+  vendaProduto,
   open,
   onOpenChange,
-}: DeleteFuncionarioDialogProps) {
+}: DeleteVendaDialogProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
@@ -34,11 +34,11 @@ export function DeleteFuncionarioDialog({
     setLoading(true)
     setError('')
     try {
-      await deleteFuncionario(funcionarioId)
+      await deleteVenda(vendaId)
       onOpenChange(false)
       router.refresh()
     } catch (e: any) {
-      setError(e?.message || 'Erro ao excluir funcionário. Tente novamente.')
+      setError(e?.message || 'Erro ao excluir venda. Tente novamente.')
       setLoading(false)
     }
   }
@@ -47,9 +47,9 @@ export function DeleteFuncionarioDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Excluir Funcionário</DialogTitle>
+          <DialogTitle>Excluir Venda</DialogTitle>
           <DialogDescription>
-            Tem certeza que deseja excluir <strong>{funcionarioName}</strong>? Esta ação não pode ser
+            Tem certeza que deseja excluir a venda <strong>#{vendaId}</strong> ({vendaProduto})? Esta ação não pode ser
             desfeita.
           </DialogDescription>
         </DialogHeader>

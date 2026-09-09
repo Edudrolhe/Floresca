@@ -5,7 +5,7 @@ import { ShieldOffIcon } from 'lucide-react'
 
 export default async function AdminAccessDenied() {
   const session = await auth()
-  const userRole = (session?.user as any)?.role
+  const userRole = session?.user?.role
 
   if (userRole === 'admin' || userRole === 'employee') {
     return null

@@ -69,19 +69,24 @@ model ItemVenda {
 }
 
 model Venda {
-  idVenda       Int         @id
-  dataVenda     Date
-  produto       VarChar(50)
-  quantidade    Int
-  preco         Float
-  totalVenda    Float       @map("Total_Venda")
-  idFormaPgto   Int
-  idFuncionario Int
-  idCliente     Int?
-  cliente       Cliente?    @relation(fields: [idCliente], references: [idCliente], map: "FK_idCliente")
-  funcionario   Funcionario @relation(fields: [idFuncionario], references: [idFuncionario], map: "FK_idFuncionario")
-  formaPagto    FormaPagto  @relation(fields: [idFormaPgto], references: [idFormaPgto], map: "FK_idFormaPgto")
-  itens         ItemVenda[]
+  idVenda            Int         @id
+  dataVenda          Date
+  produto            VarChar(50)
+  quantidade         Int
+  preco              Float
+  totalVenda         Float       @map("Total_Venda")
+  idFormaPgto        Int
+  idFuncionario      Int?
+  idCliente          Int?
+  status             String      @default("pendente")
+  idPagamentoExterno String?
+  linkPagamento      String?
+  dadosCliente       String?
+  observacoes        String?
+  cliente            Cliente?    @relation(fields: [idCliente], references: [idCliente], map: "FK_idCliente")
+  funcionario        Funcionario? @relation(fields: [idFuncionario], references: [idFuncionario], map: "FK_idFuncionario")
+  formaPagto         FormaPagto  @relation(fields: [idFormaPgto], references: [idFormaPgto], map: "FK_idFormaPgto")
+  itens              ItemVenda[]
 
   @@map("Venda")
 }

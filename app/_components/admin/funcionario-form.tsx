@@ -9,22 +9,22 @@ import { Card, CardContent } from '../ui/card'
 import {
   createFuncionario,
   updateFuncionario,
-  type FuncionarioInput,
 } from '@/app/_lib/actions/funcionarios'
+import type { FuncionarioInput } from '@/app/_lib/validations'
 
 type FuncionarioFormProps = {
   initialData?: {
-    idFunconario: number
+    idFuncionario: number
     nome: string
     cpf: string
     telefone: string
     email: string
-    dataAdmissao: Date | null
+    dataAdmissao: string | null
     salario: number | null
   }
 }
 
-function formatDateForInput(date: Date | null): string {
+function formatDateForInput(date: string | null): string {
   if (!date) return ''
   return new Date(date).toISOString().split('T')[0]
 }
@@ -52,7 +52,7 @@ export function FuncionarioForm({ initialData }: FuncionarioFormProps) {
 
     try {
       if (initialData) {
-        await updateFuncionario(initialData.idFunconario, data)
+        await updateFuncionario(initialData.idFuncionario, data)
       } else {
         await createFuncionario(data)
       }

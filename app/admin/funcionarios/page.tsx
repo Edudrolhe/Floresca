@@ -35,7 +35,10 @@ export default async function FuncionariosPage() {
         </CardContent>
       </Card>
 
-      <FuncionarioTable funcionarios={funcionarios} />
+      <FuncionarioTable funcionarios={funcionarios.map((f: any) => ({
+        ...f,
+        dataAdmissao: f.dataAdmissao?.toString() ?? null,
+      }))} />
     </div>
   )
 }

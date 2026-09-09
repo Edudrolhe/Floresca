@@ -3,28 +3,18 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '../ui/button'
-import { Badge } from '../ui/badge'
 import { PencilIcon, TrashIcon } from 'lucide-react'
 import { DeleteFuncionarioDialog } from './delete-funcionario-dialog'
+import { formatDate, formatCurrency } from '@/app/_lib/utils'
 
 type Funcionario = {
-  idFunconario: number
+  idFuncionario: number
   nome: string
   cpf: string
   telefone: string
   email: string
-  dataAdmissao: Date | null
+  dataAdmissao: string | null
   salario: number | null
-}
-
-function formatDate(date: Date | null) {
-  if (!date) return '-'
-  return new Date(date).toLocaleDateString('pt-BR')
-}
-
-function formatCurrency(value: number | null) {
-  if (!value) return '-'
-  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }
 
 export function FuncionarioTable({ funcionarios }: { funcionarios: Funcionario[] }) {
@@ -54,7 +44,7 @@ export function FuncionarioTable({ funcionarios }: { funcionarios: Funcionario[]
           <tbody>
             {funcionarios.map((func) => (
               <tr
-                key={func.idFunconario}
+                key={func.idFuncionario}
                 className="border-b transition-colors last:border-b-0 hover:bg-gray-50"
               >
                 <td className="px-4 py-3">
@@ -74,7 +64,7 @@ export function FuncionarioTable({ funcionarios }: { funcionarios: Funcionario[]
                 </td>
                 <td className="px-4 py-3 text-right">
                   <div className="flex justify-end gap-1">
-                    <Link href={`/admin/funcionarios/${func.idFunconario}/editar`}>
+                    <Link href={`/admin/funcionarios/${func.idFuncionario}/editar`}>
                       <Button
                         variant="ghost"
                         size="icon"
@@ -87,7 +77,7 @@ export function FuncionarioTable({ funcionarios }: { funcionarios: Funcionario[]
                       variant="ghost"
                       size="icon"
                       className="text-gray-500 hover:text-red-600"
-                      onClick={() => handleDeleteClick(func.idFunconario, func.nome)}
+                      onClick={() => handleDeleteClick(func.idFuncionario, func.nome)}
                     >
                       <TrashIcon className="size-4" />
                     </Button>

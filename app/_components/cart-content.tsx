@@ -249,10 +249,12 @@ export default function CartContent() {
                   </div>
                 </div>
 
-                <Button className="mt-6 w-full gap-2 bg-purple-700 hover:bg-purple-800" size="lg">
-                  <CreditCardIcon className="size-5" />
-                  Finalizar Pedido
-                </Button>
+                <Link href="/checkout" className="mt-6 block">
+                  <Button className="w-full gap-2 bg-purple-700 hover:bg-purple-800" size="lg">
+                    <CreditCardIcon className="size-5" />
+                    Finalizar Pedido
+                  </Button>
+                </Link>
 
                 <div className="mt-4 space-y-2 text-xs text-gray-500">
                   <div className="flex items-center gap-2">

@@ -25,12 +25,12 @@ export default async function EditFuncionarioPage({ params }: Props) {
 
       <FuncionarioForm
         initialData={{
-          idFunconario: funcionario.idFunconario,
+          idFuncionario: funcionario.idFuncionario,
           nome: String(funcionario.nome),
           cpf: String(funcionario.cpf),
           telefone: String(funcionario.telefone),
           email: String(funcionario.email),
-          dataAdmissao: funcionario.dataAdmissao,
+          dataAdmissao: funcionario.dataAdmissao?.toString() ?? null,
           salario: funcionario.salario,
         }}
       />

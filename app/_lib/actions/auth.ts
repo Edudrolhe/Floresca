@@ -2,6 +2,6 @@
 
 import { signOut } from '@/src/prisma/auth'
 
-export async function handleSignOut() {
+export async function adminSignOut() {
   await signOut({ redirectTo: '/' })
 }

@@ -14,7 +14,7 @@ const categories = [
 
 export default function CategoryBar() {
   return (
-    <div className="mt-6 flex items-center gap-2 overflow-x-auto sm:mt-8">
+    <div className="mt-6 hidden items-center gap-2 overflow-x-auto sm:mt-8 md:flex">
       {categories.map((cat) => (
         <Link key={cat.name} href={`/categoria/${cat.slug}`}>
           <Button className="shrink-0 gap-2" variant="secondary">
