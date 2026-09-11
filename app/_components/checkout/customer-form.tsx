@@ -13,6 +13,7 @@ export default function CustomerForm({ onFormChange }: CustomerFormProps) {
     nome: '',
     telefone: '',
     email: '',
+    cpf: '',
     rua: '',
     numero: '',
     complemento: '',
@@ -55,7 +56,7 @@ export default function CustomerForm({ onFormChange }: CustomerFormProps) {
             />
           </div>
           <div>
-            <Label htmlFor="email">Email (opcional)</Label>
+            <Label htmlFor="email">Email *</Label>
             <Input
               id="email"
               type="email"
@@ -63,8 +64,21 @@ export default function CustomerForm({ onFormChange }: CustomerFormProps) {
               onChange={(e) => handleChange('email', e.target.value)}
               placeholder="seu@email.com"
               className="mt-2 h-12 text-base"
+              required
             />
           </div>
+        </div>
+        <div className="w-1/2">
+          <Label htmlFor="cpf">CPF *</Label>
+          <Input
+            id="cpf"
+            value={form.cpf}
+            onChange={(e) => handleChange('cpf', e.target.value.replace(/\D/g, '').slice(0, 11))}
+            placeholder="000.000.000-00"
+            maxLength={11}
+            className="mt-2 h-12 text-base"
+            required
+          />
         </div>
       </div>
 

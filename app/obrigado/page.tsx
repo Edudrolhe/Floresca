@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect } from 'react'
 import Link from 'next/link'
 import Header from '@/app/_components/header'
 import Footer from '@/app/_components/footer'
@@ -5,6 +8,10 @@ import { CheckCircleIcon } from 'lucide-react'
 import { Button } from '@/app/_components/ui/button'
 
 export default function ObrigadoPage() {
+  useEffect(() => {
+    localStorage.removeItem('floresca-cart')
+  }, [])
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />

@@ -10,16 +10,18 @@ import { FuncionarioSchema, type FuncionarioInput } from '@/app/_lib/validations
 export type { FuncionarioInput }
 
 async function getNextId(table: string, idColumn: string, tx: any): Promise<number> {
-  const result = await tx.unsafe(`SELECT COALESCE(MAX("${idColumn}"), 0) + 1 AS next_id FROM "${table}"`)
+  const result = await tx.unsafe(`SELECT COALESCE(MAX("${idColumn}"), 0) + 1 AS next_id FROM "${table}" FOR UPDATE`)
   return result.rows[0].next_id
 }
 
 export async function getFuncionarios() {
+  await requireAdmin()
   await connectDatabase()
   return db.orm.public.Funcionario.all() as any
 }
 
 export async function getFuncionario(id: number) {
+  await requireAdmin()
   await connectDatabase()
   return db.orm.public.Funcionario.where({ idFuncionario: id } as any).first() as any
 }

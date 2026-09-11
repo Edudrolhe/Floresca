@@ -41,10 +41,8 @@ export type VendaInput = z.infer<typeof VendaSchema>
 export const CheckoutSchema = z.object({
   nome: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
   telefone: z.string().min(10, 'Telefone inválido'),
-  email: z.string().refine(
-    (val) => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
-    'Email inválido'
-  ),
+  email: z.string().min(1, 'Email é obrigatório').email('Email inválido'),
+  cpf: z.string().min(11, 'CPF deve ter 11 dígitos').max(14, 'CPF inválido'),
   rua: z.string().min(3, 'Rua é obrigatória'),
   numero: z.string().min(1, 'Número é obrigatório'),
   complemento: z.string().optional(),

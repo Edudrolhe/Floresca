@@ -119,6 +119,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
                       fill
                       sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                       className="object-cover"
+                      priority={products.indexOf(product) === 0}
                     />
                     <button
                       onClick={(e) => toggleFavorite(e, product.id)}

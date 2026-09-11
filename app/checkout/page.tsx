@@ -24,28 +24,39 @@ export default function CheckoutPage() {
   useEffect(() => {
     const saved = localStorage.getItem('floresca-cart')
     if (saved) {
-      const basicCart: { id: number; quantity: number }[] = JSON.parse(saved)
-      fetch('/api/produtos')
-        .then((res) => res.json())
-        .then((products) => {
-          const items = basicCart.map((ci) => {
-            const product = products.find((p: any) => p.id === ci.id)
-            return {
-              id: ci.id,
-              name: product?.name || '',
-              price: product?.price || 0,
-              quantity: ci.quantity,
-              image: product?.image || '',
-            }
+      try {
+        const basicCart: { id: number; quantity: number }[] = JSON.parse(saved)
+        fetch('/api/produtos')
+          .then((res) => res.json())
+          .then((products) => {
+            const items = basicCart.map((ci) => {
+              const product = products.find((p: any) => p.id === ci.id)
+              return {
+                id: ci.id,
+                name: product?.name || '',
+                price: product?.price || 0,
+                quantity: ci.quantity,
+                image: product?.image || '',
+              }
+            })
+            setCartItems(items)
           })
-          setCartItems(items)
-        })
+      } catch {
+        setCartItems([])
+      }
     }
   }, [])
+
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const frete = subtotal >= 100 ? 0 : 15
+  const total = subtotal + frete
 
   const isFormValid =
     formData.nome &&
     formData.telefone &&
+    formData.email &&
+    formData.cpf &&
+    formData.cpf.length === 11 &&
     formData.rua &&
     formData.numero &&
     formData.bairro &&
@@ -62,16 +73,24 @@ export default function CheckoutPage() {
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
             <div className="space-y-6">
               <CustomerForm onFormChange={setFormData} />
-              <PaymentMethodSelector selected={metodoPagamento} onSelect={setMetodoPagamento} />
+              <PaymentMethodSelector
+                selected={metodoPagamento}
+                onSelect={setMetodoPagamento}
+                total={total}
+                formData={formData}
+                cartItems={cartItems}
+              />
             </div>
             <div className="space-y-6">
               <OrderSummary items={cartItems} />
-              <PayButton
-                formData={formData}
-                cartItems={cartItems}
-                metodoPagamento={metodoPagamento}
-                isDisabled={!isFormValid}
-              />
+              {metodoPagamento === 'pix' && (
+                <PayButton
+                  formData={formData}
+                  cartItems={cartItems}
+                  total={total}
+                  isDisabled={!isFormValid}
+                />
+              )}
             </div>
           </div>
         </div>

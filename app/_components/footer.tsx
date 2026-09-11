@@ -79,11 +79,11 @@ const Footer = () => {
           {/* Formas de Pagamento */}
           <div>
             <h4 className="mb-3 text-sm font-bold text-purple-700">Formas de Pagamento</h4>
-            <Image src="/formaPg.png" alt="Formas de Pagamento" width={200} height={100} />
+            <Image src="/formaPg.png" alt="Formas de Pagamento" width={200} height={100} style={{ width: 'auto', height: 'auto' }} />
             <ul className="space-y-2 text-sm text-gray-600">
             </ul>
             <h4 className="mt-4 mb-3 text-sm font-bold text-purple-700">Certificações</h4>
-            <Image src="/siteSeg.png" alt="Site seguro" width={200} height={100} />
+            <Image src="/siteSeg.png" alt="Site seguro" width={200} height={100} style={{ width: 'auto', height: 'auto' }} />
             <ul className="space-y-2 text-sm text-gray-600">
             </ul>
           </div>

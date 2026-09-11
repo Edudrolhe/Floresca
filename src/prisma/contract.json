@@ -105,8 +105,12 @@
               "vendas": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": ["idCliente"],
-                  "targetFields": ["idCliente"]
+                  "localFields": [
+                    "idCliente"
+                  ],
+                  "targetFields": [
+                    "idCliente"
+                  ]
                 },
                 "to": {
                   "model": "Venda",
@@ -248,8 +252,12 @@
               "login": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idUsuario"],
-                  "targetFields": ["iditemUsuario"]
+                  "localFields": [
+                    "idUsuario"
+                  ],
+                  "targetFields": [
+                    "iditemUsuario"
+                  ]
                 },
                 "to": {
                   "model": "Login",
@@ -259,8 +267,12 @@
               "vendas": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": ["idFuncionario"],
-                  "targetFields": ["idFuncionario"]
+                  "localFields": [
+                    "idFuncionario"
+                  ],
+                  "targetFields": [
+                    "idFuncionario"
+                  ]
                 },
                 "to": {
                   "model": "Venda",
@@ -320,8 +332,12 @@
               "produto": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idProduto"],
-                  "targetFields": ["idProduto"]
+                  "localFields": [
+                    "idProduto"
+                  ],
+                  "targetFields": [
+                    "idProduto"
+                  ]
                 },
                 "to": {
                   "model": "Produto",
@@ -331,8 +347,12 @@
               "venda": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idVenda"],
-                  "targetFields": ["idVenda"]
+                  "localFields": [
+                    "idVenda"
+                  ],
+                  "targetFields": [
+                    "idVenda"
+                  ]
                 },
                 "to": {
                   "model": "Venda",
@@ -377,8 +397,12 @@
               "funcionarios": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": ["iditemUsuario"],
-                  "targetFields": ["idUsuario"]
+                  "localFields": [
+                    "iditemUsuario"
+                  ],
+                  "targetFields": [
+                    "idUsuario"
+                  ]
                 },
                 "to": {
                   "model": "Funcionario",
@@ -475,8 +499,12 @@
               "tipoProduto": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idCategoria"],
-                  "targetFields": ["idCategoria"]
+                  "localFields": [
+                    "idCategoria"
+                  ],
+                  "targetFields": [
+                    "idCategoria"
+                  ]
                 },
                 "to": {
                   "model": "TipoProduto",
@@ -542,8 +570,12 @@
               "produtos": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": ["idCategoria"],
-                  "targetFields": ["idCategoria"]
+                  "localFields": [
+                    "idCategoria"
+                  ],
+                  "targetFields": [
+                    "idCategoria"
+                  ]
                 },
                 "to": {
                   "model": "Produto",
@@ -566,6 +598,13 @@
           },
           "Venda": {
             "fields": {
+              "dadosCliente": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "dataVenda": {
                 "nullable": false,
                 "type": {
@@ -594,10 +633,31 @@
                   "kind": "scalar"
                 }
               },
+              "idPagamentoExterno": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "idVenda": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "linkPagamento": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "observacoes": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               },
@@ -625,6 +685,13 @@
                   "kind": "scalar"
                 }
               },
+              "status": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
               "totalVenda": {
                 "nullable": false,
                 "type": {
@@ -637,8 +704,12 @@
               "cliente": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idCliente"],
-                  "targetFields": ["idCliente"]
+                  "localFields": [
+                    "idCliente"
+                  ],
+                  "targetFields": [
+                    "idCliente"
+                  ]
                 },
                 "to": {
                   "model": "Cliente",
@@ -648,8 +719,12 @@
               "formaPagto": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idFormaPgto"],
-                  "targetFields": ["idFormaPgto"]
+                  "localFields": [
+                    "idFormaPgto"
+                  ],
+                  "targetFields": [
+                    "idFormaPgto"
+                  ]
                 },
                 "to": {
                   "model": "FormaPagto",
@@ -659,8 +734,12 @@
               "funcionario": {
                 "cardinality": "N:1",
                 "on": {
-                  "localFields": ["idFuncionario"],
-                  "targetFields": ["idFuncionario"]
+                  "localFields": [
+                    "idFuncionario"
+                  ],
+                  "targetFields": [
+                    "idFuncionario"
+                  ]
                 },
                 "to": {
                   "model": "Funcionario",
@@ -670,8 +749,12 @@
               "itens": {
                 "cardinality": "1:N",
                 "on": {
-                  "localFields": ["idVenda"],
-                  "targetFields": ["idVenda"]
+                  "localFields": [
+                    "idVenda"
+                  ],
+                  "targetFields": [
+                    "idVenda"
+                  ]
                 },
                 "to": {
                   "model": "ItemVenda",
@@ -681,6 +764,9 @@
             },
             "storage": {
               "fields": {
+                "dadosCliente": {
+                  "column": "dadosCliente"
+                },
                 "dataVenda": {
                   "column": "dataVenda"
                 },
@@ -693,8 +779,17 @@
                 "idFuncionario": {
                   "column": "idFuncionario"
                 },
+                "idPagamentoExterno": {
+                  "column": "idPagamentoExterno"
+                },
                 "idVenda": {
                   "column": "idVenda"
+                },
+                "linkPagamento": {
+                  "column": "linkPagamento"
+                },
+                "observacoes": {
+                  "column": "observacoes"
                 },
                 "preco": {
                   "column": "preco"
@@ -704,6 +799,9 @@
                 },
                 "quantidade": {
                   "column": "quantidade"
+                },
+                "status": {
+                  "column": "status"
                 },
                 "totalVenda": {
                   "column": "Total_Venda"
@@ -773,7 +871,9 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": ["idCliente"]
+                "columns": [
+                  "idCliente"
+                ]
               },
               "uniques": []
             },
@@ -796,7 +896,9 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": ["idFormaPgto"]
+                "columns": [
+                  "idFormaPgto"
+                ]
               },
               "uniques": []
             },
@@ -859,12 +961,16 @@
                 {
                   "name": "FK_idUsuario",
                   "source": {
-                    "columns": ["idUsuario"],
+                    "columns": [
+                      "idUsuario"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Funcionario"
                   },
                   "target": {
-                    "columns": ["iditemUsuario"],
+                    "columns": [
+                      "iditemUsuario"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Login"
                   }
@@ -872,14 +978,18 @@
               ],
               "indexes": [
                 {
-                  "columns": ["idUsuario"],
+                  "columns": [
+                    "idUsuario"
+                  ],
                   "name": "Funcionario_idUsuario_idx_2255b915",
                   "prefix": "Funcionario_idUsuario_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": ["idFunconario"]
+                "columns": [
+                  "idFunconario"
+                ]
               },
               "uniques": []
             },
@@ -902,7 +1012,9 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": ["iditemUsuario"]
+                "columns": [
+                  "iditemUsuario"
+                ]
               },
               "uniques": []
             },
@@ -968,12 +1080,16 @@
                 {
                   "name": "FK_idCategoria",
                   "source": {
-                    "columns": ["idCategoria"],
+                    "columns": [
+                      "idCategoria"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Produto"
                   },
                   "target": {
-                    "columns": ["idCategoria"],
+                    "columns": [
+                      "idCategoria"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Tipo_produto"
                   }
@@ -981,14 +1097,18 @@
               ],
               "indexes": [
                 {
-                  "columns": ["idCategoria"],
+                  "columns": [
+                    "idCategoria"
+                  ],
                   "name": "Produto_idCategoria_idx_430ced79",
                   "prefix": "Produto_idCategoria_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": ["idProduto"]
+                "columns": [
+                  "idProduto"
+                ]
               },
               "uniques": []
             },
@@ -1011,7 +1131,9 @@
               "foreignKeys": [],
               "indexes": [],
               "primaryKey": {
-                "columns": ["idCategoria"]
+                "columns": [
+                  "idCategoria"
+                ]
               },
               "uniques": []
             },
@@ -1021,6 +1143,11 @@
                   "codecId": "pg/float8@1",
                   "nativeType": "float8",
                   "nullable": false
+                },
+                "dadosCliente": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": true
                 },
                 "dataVenda": {
                   "codecId": "pg/date-temporal@1",
@@ -1040,12 +1167,27 @@
                 "idFuncionario": {
                   "codecId": "pg/int4@1",
                   "nativeType": "int4",
-                  "nullable": false
+                  "nullable": true
+                },
+                "idPagamentoExterno": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": true
                 },
                 "idVenda": {
                   "codecId": "pg/int4@1",
                   "nativeType": "int4",
                   "nullable": false
+                },
+                "linkPagamento": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": true
+                },
+                "observacoes": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": true
                 },
                 "preco": {
                   "codecId": "pg/float8@1",
@@ -1064,18 +1206,31 @@
                   "codecId": "pg/int4@1",
                   "nativeType": "int4",
                   "nullable": false
+                },
+                "status": {
+                  "codecId": "pg/text@1",
+                  "default": {
+                    "kind": "literal",
+                    "value": "pendente"
+                  },
+                  "nativeType": "text",
+                  "nullable": false
                 }
               },
               "foreignKeys": [
                 {
                   "name": "FK_idCliente",
                   "source": {
-                    "columns": ["idCliente"],
+                    "columns": [
+                      "idCliente"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   },
                   "target": {
-                    "columns": ["idCliente"],
+                    "columns": [
+                      "idCliente"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Cliente"
                   }
@@ -1083,12 +1238,16 @@
                 {
                   "name": "FK_idFuncionario",
                   "source": {
-                    "columns": ["idFuncionario"],
+                    "columns": [
+                      "idFuncionario"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   },
                   "target": {
-                    "columns": ["idFunconario"],
+                    "columns": [
+                      "idFunconario"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Funcionario"
                   }
@@ -1096,12 +1255,16 @@
                 {
                   "name": "FK_idFormaPgto",
                   "source": {
-                    "columns": ["idFormaPgto"],
+                    "columns": [
+                      "idFormaPgto"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   },
                   "target": {
-                    "columns": ["idFormaPgto"],
+                    "columns": [
+                      "idFormaPgto"
+                    ],
                     "namespaceId": "public",
                     "tableName": "FormaPagto"
                   }
@@ -1109,26 +1272,34 @@
               ],
               "indexes": [
                 {
-                  "columns": ["idCliente"],
+                  "columns": [
+                    "idCliente"
+                  ],
                   "name": "Venda_idCliente_idx_f51e9825",
                   "prefix": "Venda_idCliente_idx",
                   "unique": false
                 },
                 {
-                  "columns": ["idFormaPgto"],
+                  "columns": [
+                    "idFormaPgto"
+                  ],
                   "name": "Venda_idFormaPgto_idx_1e5a0c4a",
                   "prefix": "Venda_idFormaPgto_idx",
                   "unique": false
                 },
                 {
-                  "columns": ["idFuncionario"],
+                  "columns": [
+                    "idFuncionario"
+                  ],
                   "name": "Venda_idFuncionario_idx_a3fb447f",
                   "prefix": "Venda_idFuncionario_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": ["idVenda"]
+                "columns": [
+                  "idVenda"
+                ]
               },
               "uniques": []
             },
@@ -1148,24 +1319,32 @@
               "foreignKeys": [
                 {
                   "source": {
-                    "columns": ["idVenda"],
+                    "columns": [
+                      "idVenda"
+                    ],
                     "namespaceId": "public",
                     "tableName": "item_venda"
                   },
                   "target": {
-                    "columns": ["idVenda"],
+                    "columns": [
+                      "idVenda"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Venda"
                   }
                 },
                 {
                   "source": {
-                    "columns": ["idProduto"],
+                    "columns": [
+                      "idProduto"
+                    ],
                     "namespaceId": "public",
                     "tableName": "item_venda"
                   },
                   "target": {
-                    "columns": ["idProduto"],
+                    "columns": [
+                      "idProduto"
+                    ],
                     "namespaceId": "public",
                     "tableName": "Produto"
                   }
@@ -1173,20 +1352,27 @@
               ],
               "indexes": [
                 {
-                  "columns": ["idProduto"],
+                  "columns": [
+                    "idProduto"
+                  ],
                   "name": "item_venda_idProduto_idx_5613a5d0",
                   "prefix": "item_venda_idProduto_idx",
                   "unique": false
                 },
                 {
-                  "columns": ["idVenda"],
+                  "columns": [
+                    "idVenda"
+                  ],
                   "name": "item_venda_idVenda_idx_7d9ee885",
                   "prefix": "item_venda_idVenda_idx",
                   "unique": false
                 }
               ],
               "primaryKey": {
-                "columns": ["idVenda", "idProduto"]
+                "columns": [
+                  "idVenda",
+                  "idProduto"
+                ]
               },
               "uniques": []
             }
@@ -1196,7 +1382,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "a7d3b4bd42654a8fba4315ac0b549eb9121050e64a582c2eb6d7045762227d3f"
+    "storageHash": "2e6aa8aee3c05b5b5d4ab1bbd9f148831256efa482a56c3e30c9022937fc47f3"
   },
   "capabilities": {
     "postgres": {

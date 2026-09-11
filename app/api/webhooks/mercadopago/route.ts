@@ -17,7 +17,16 @@ function verifyWebhookSignature(body: string, signature: string, secret: string)
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
+    const rawBody = await request.text()
+    const body = JSON.parse(rawBody)
+
+    const signature = request.headers.get('x-signature') || ''
+    const webhookSecret = process.env.MERCADO_PAGO_WEBHOOK_SECRET
+
+    if (webhookSecret && !verifyWebhookSignature(rawBody, signature, webhookSecret)) {
+      console.warn('[Webhook] Invalid signature')
+      return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
+    }
 
     if (body.type !== 'payment') {
       return NextResponse.json({ received: true })
