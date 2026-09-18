@@ -78,27 +78,9 @@
 <div align="center">
 
 <svg width="1100" height="800" viewBox="0 0 1100 800" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E8EDF2" stroke-width="0.5"/>
-    </pattern>
-    <!-- Open arrowhead (association) -->
-    <marker id="assoc" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
-      <path d="M0,1 L11,5 L0,9" fill="none" stroke="#333" stroke-width="1"/>
-    </marker>
-    <!-- Diamond (composition - filled) -->
-    <marker id="comp" markerWidth="16" markerHeight="12" refX="0" refY="6" orient="auto">
-      <path d="M8,0 L16,6 L8,12 L0,6 Z" fill="#333" stroke="#333" stroke-width="0.8"/>
-    </marker>
-    <!-- Open diamond (aggregation) -->
-    <marker id="agg" markerWidth="16" markerHeight="12" refX="0" refY="6" orient="auto">
-      <path d="M8,0 L16,6 L8,12 L0,6 Z" fill="#FFFDE7" stroke="#333" stroke-width="0.8"/>
-    </marker>
-  </defs>
 
-  <!-- Background with grid -->
+  <!-- Background -->
   <rect width="1100" height="800" fill="#FAFCFF"/>
-  <rect width="1100" height="800" fill="url(#grid)"/>
 
   <!-- Package tag -->
   <path d="M0,8 L0,0 L80,0 L80,16 L68,16" fill="#E8EDF2" stroke="#999" stroke-width="0.8"/>
@@ -218,7 +200,7 @@
     <text x="8" y="120" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-status : String</text>
     <text x="8" y="133" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-dadosCliente : String?</text>
     <text x="8" y="146" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-observacoes : String?</text>
-    <text x="8" y="159" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idPagamentoExterno : String?</text>
+    <text x="8" y="159" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idPagamentoExterno:String?</text>
     <text x="8" y="172" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-linkPagamento : String?</text>
     <text x="8" y="185" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idCliente : int?</text>
     <text x="8" y="198" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idFuncionario : int?</text>
@@ -249,66 +231,68 @@
 
   <!-- TipoProduto "cadastra" Produto -->
   <line x1="190" y1="115" x2="230" y2="115" stroke="#333" stroke-width="1"/>
-  <text x="195" y="108" font-family="Arial, sans-serif" font-size="8" fill="#333">cadastra</text>
-  <text x="194" y="130" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
-  <text x="220" y="108" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <polygon points="227,111 237,115 227,119" fill="#333"/>
+  <text x="192" y="108" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">cadastra</text>
+  <text x="194" y="130" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
+  <text x="220" y="108" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
 
   <!-- Login "gerencia" Funcionario -->
   <line x1="880" y1="120" x2="830" y2="120" stroke="#333" stroke-width="1"/>
-  <text x="842" y="113" font-family="Arial, sans-serif" font-size="8" fill="#333">gerencia</text>
-  <text x="872" y="135" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
-  <text x="838" y="135" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <polygon points="833,116 823,120 833,124" fill="#333"/>
+  <text x="842" y="113" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">gerencia</text>
+  <text x="872" y="135" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
+  <text x="835" y="135" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
 
   <!-- Cliente "realiza" Venda -->
-  <path d="M120,510 L120,540 L370,540 L370,580" stroke="#333" stroke-width="1" fill="none"/>
-  <text x="128" y="535" font-family="Arial, sans-serif" font-size="8" fill="#333">realiza</text>
-  <text x="128" y="555" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
-  <text x="358" y="575" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <polyline points="120,510 120,540 370,540 370,580" stroke="#333" stroke-width="1" fill="none"/>
+  <polygon points="366,577 370,587 374,577" fill="#333"/>
+  <text x="128" y="535" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">realiza</text>
+  <text x="128" y="555" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
+  <text x="358" y="575" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
 
   <!-- Funcionario "efetua" Venda -->
-  <path d="M705,280 L705,320 L520,320 L520,420" stroke="#333" stroke-width="1" fill="none"/>
-  <text x="660" y="315" font-family="Arial, sans-serif" font-size="8" fill="#333">efetua</text>
-  <text x="713" y="315" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
-  <text x="508" y="415" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <polyline points="705,280 705,320 520,320 520,420" stroke="#333" stroke-width="1" fill="none"/>
+  <polygon points="516,417 520,427 524,417" fill="#333"/>
+  <text x="660" y="315" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">efetua</text>
+  <text x="713" y="315" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
+  <text x="508" y="415" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
 
   <!-- FormaPagto "pagamento" Venda -->
-  <path d="M110,690 L110,730 L480,730 L480,720" stroke="#333" stroke-width="1" fill="none"/>
-  <text x="200" y="725" font-family="Arial, sans-serif" font-size="8" fill="#333">pagamento</text>
-  <text x="118" y="725" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
-  <text x="468" y="715" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <polyline points="110,690 110,740 480,740 480,720" stroke="#333" stroke-width="1" fill="none"/>
+  <polygon points="476,723 480,713 484,723" fill="#333"/>
+  <text x="200" y="735" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">pagamento</text>
+  <text x="118" y="735" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
+  <text x="468" y="715" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
 
-  <!-- Venda "contem" ItemVenda (composition) -->
-  <line x1="660" y1="570" x2="760" y2="500" stroke="#333" stroke-width="1" marker-start="url(#comp)"/>
-  <text x="675" y="525" font-family="Arial, sans-serif" font-size="8" fill="#333">contem</text>
-  <text x="648" y="565" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
-  <text x="748" y="495" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <!-- Venda "contem" ItemVenda (composition diamond) -->
+  <line x1="660" y1="570" x2="760" y2="500" stroke="#333" stroke-width="1"/>
+  <!-- Filled diamond (composition) -->
+  <polygon points="665,565 680,558 675,570 660,563" fill="#333" stroke="#333" stroke-width="0.5"/>
+  <text x="678" y="525" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">contem</text>
+  <text x="648" y="565" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
+  <text x="748" y="495" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
 
   <!-- ItemVenda "referencia" Produto -->
-  <path d="M870,370 L870,300 L600,300 L600,280" stroke="#333" stroke-width="1" fill="none"/>
-  <text x="710" y="295" font-family="Arial, sans-serif" font-size="8" fill="#333">referencia</text>
-  <text x="878" y="310" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
-  <text x="608" y="278" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <polyline points="870,370 870,300 600,300 600,280" stroke="#333" stroke-width="1" fill="none"/>
+  <polygon points="596,283 600,273 604,283" fill="#333"/>
+  <text x="710" y="295" font-family="Arial, sans-serif" font-size="8" fill="#333" font-style="italic">referencia</text>
+  <text x="878" y="310" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">0..*</text>
+  <text x="608" y="278" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="bold">1</text>
 
   <!-- ==================== LEGEND ==================== -->
   <g transform="translate(20, 740)">
     <rect width="1060" height="50" rx="3" fill="#FFFDE7" stroke="#CCC" stroke-width="0.8"/>
     <text x="16" y="16" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#333">LEGENDA</text>
-    <!-- Composition -->
-    <path d="M20,34 L28,28 L36,34 L28,40 Z" fill="#333" stroke="#333" stroke-width="0.8"/>
-    <text x="42" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">Composicao</text>
-    <!-- Aggregation -->
-    <path d="M120,34 L128,28 L136,34 L128,40 Z" fill="#FFFDE7" stroke="#333" stroke-width="0.8"/>
-    <text x="142" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">Agregacao</text>
-    <!-- Association -->
-    <line x1="220" y1="34" x2="250" y2="34" stroke="#333" stroke-width="1"/>
-    <path d="M244,30 L254,34 L244,38" fill="none" stroke="#333" stroke-width="1"/>
-    <text x="260" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">Associacao</text>
-    <!-- Multiplicity -->
-    <text x="360" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">1 = Um | 0..* = Zero ou Mais</text>
-    <!-- Stereotypes -->
-    <text x="560" y="38" font-family="Arial, sans-serif" font-size="8" fill="#888">«create» «override» = Estereotipos</text>
+    <!-- Composition diamond -->
+    <polygon points="24,30 32,24 40,30 32,36" fill="#333" stroke="#333" stroke-width="0.5"/>
+    <text x="46" y="34" font-family="Arial, sans-serif" font-size="8" fill="#555">Composicao (1:*)</text>
+    <!-- Arrow -->
+    <line x1="160" y1="30" x2="190" y2="30" stroke="#333" stroke-width="1"/>
+    <polygon points="187,26 197,30 187,34" fill="#333"/>
+    <text x="204" y="34" font-family="Arial, sans-serif" font-size="8" fill="#555">Associacao</text>
     <!-- Notation -->
-    <text x="800" y="38" font-family="Arial, sans-serif" font-size="8" fill="#888">Notacao: AstahUML Class Diagram</text>
+    <text x="310" y="34" font-family="Arial, sans-serif" font-size="8" fill="#555">1 = Um | 0..* = Zero ou Mais</text>
+    <text x="530" y="34" font-family="Arial, sans-serif" font-size="8" fill="#888">Notacao: AstahUML Class Diagram</text>
   </g>
 </svg>
 
