@@ -77,7 +77,7 @@
 
 <div align="center">
 
-<svg width="1100" height="780" viewBox="0 0 1100 780" xmlns="http://www.w3.org/2000/svg">
+<svg width="1100" height="800" viewBox="0 0 1100 800" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
       <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E8EDF2" stroke-width="0.5"/>
@@ -86,19 +86,19 @@
     <marker id="assoc" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
       <path d="M0,1 L11,5 L0,9" fill="none" stroke="#333" stroke-width="1"/>
     </marker>
-    <!-- Diamond (composition) -->
-    <marker id="comp" markerWidth="14" markerHeight="10" refX="0" refY="5" orient="auto">
-      <path d="M7,0 L14,5 L7,10 L0,5 Z" fill="#333" stroke="#333" stroke-width="0.8"/>
+    <!-- Diamond (composition - filled) -->
+    <marker id="comp" markerWidth="16" markerHeight="12" refX="0" refY="6" orient="auto">
+      <path d="M8,0 L16,6 L8,12 L0,6 Z" fill="#333" stroke="#333" stroke-width="0.8"/>
     </marker>
     <!-- Open diamond (aggregation) -->
-    <marker id="agg" markerWidth="14" markerHeight="10" refX="0" refY="5" orient="auto">
-      <path d="M7,0 L14,5 L7,10 L0,5 Z" fill="#FFFFFF" stroke="#333" stroke-width="0.8"/>
+    <marker id="agg" markerWidth="16" markerHeight="12" refX="0" refY="6" orient="auto">
+      <path d="M8,0 L16,6 L8,12 L0,6 Z" fill="#FFFDE7" stroke="#333" stroke-width="0.8"/>
     </marker>
   </defs>
 
   <!-- Background with grid -->
-  <rect width="1100" height="780" fill="#FAFCFF"/>
-  <rect width="1100" height="780" fill="url(#grid)"/>
+  <rect width="1100" height="800" fill="#FAFCFF"/>
+  <rect width="1100" height="800" fill="url(#grid)"/>
 
   <!-- Package tag -->
   <path d="M0,8 L0,0 L80,0 L80,16 L68,16" fill="#E8EDF2" stroke="#999" stroke-width="0.8"/>
@@ -106,38 +106,36 @@
 
   <!-- ==================== CLASSES ==================== -->
 
-  <!-- Login -->
-  <g transform="translate(900, 50)">
-    <rect width="160" height="100" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
-    <!-- Name -->
-    <text x="80" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Login</text>
-    <line x1="0" y1="22" x2="160" y2="22" stroke="#333" stroke-width="0.6"/>
-    <!-- Attributes -->
+  <!-- Login (top right) -->
+  <g transform="translate(880, 50)">
+    <rect width="180" height="100" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+    <text x="90" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Login</text>
+    <line x1="0" y1="22" x2="180" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="38" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-iditemUsuario : int</text>
     <text x="8" y="52" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-descricao : String</text>
-    <line x1="0" y1="60" x2="160" y2="60" stroke="#333" stroke-width="0.6"/>
-    <!-- Methods -->
+    <line x1="0" y1="60" x2="180" y2="60" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="74" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getDescricao() : String</text>
-    <text x="8" y="88" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+setDescricao(desc : String) : void</text>
+    <text x="8" y="88" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+setDescricao(desc:String):void</text>
   </g>
 
-  <!-- TipoProduto -->
+  <!-- TipoProduto (top left) -->
   <g transform="translate(20, 50)">
-    <rect width="160" height="100" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
-    <text x="80" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">TipoProduto</text>
-    <line x1="0" y1="22" x2="160" y2="22" stroke="#333" stroke-width="0.6"/>
+    <rect width="170" height="110" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+    <text x="85" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">TipoProduto</text>
+    <line x1="0" y1="22" x2="170" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="38" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idCategoria : int</text>
     <text x="8" y="52" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-categoria : String</text>
-    <line x1="0" y1="60" x2="160" y2="60" stroke="#333" stroke-width="0.6"/>
-    <text x="8" y="74" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getCategoria() : String</text>
-    <text x="8" y="88" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getProdutos() : Produto[]</text>
+    <line x1="0" y1="62" x2="170" y2="62" stroke="#333" stroke-width="0.6"/>
+    <text x="8" y="76" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getCategoria() : String</text>
+    <text x="8" y="90" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getProdutos() : Produto[]</text>
+    <text x="8" y="104" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+create(cat:String):TipoProduto</text>
   </g>
 
-  <!-- Produto -->
-  <g transform="translate(260, 50)">
-    <rect width="230" height="210" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
-    <text x="115" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Produto</text>
-    <line x1="0" y1="22" x2="230" y2="22" stroke="#333" stroke-width="0.6"/>
+  <!-- Produto (mid-left) -->
+  <g transform="translate(230, 50)">
+    <rect width="240" height="230" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+    <text x="120" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Produto</text>
+    <line x1="0" y1="22" x2="240" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="37" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idProduto : int</text>
     <text x="8" y="50" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-codBarras : Decimal</text>
     <text x="8" y="63" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-descricao : String</text>
@@ -147,18 +145,19 @@
     <text x="8" y="115" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-precoOriginal : float?</text>
     <text x="8" y="128" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-parcelas : int?</text>
     <text x="8" y="141" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idCategoria : int?</text>
-    <line x1="0" y1="150" x2="230" y2="150" stroke="#333" stroke-width="0.6"/>
-    <text x="8" y="165" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getPreco() : float</text>
-    <text x="8" y="178" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getDescricao() : String</text>
-    <text x="8" y="191" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getTipoProduto() : TipoProduto</text>
-    <text x="8" y="204" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+isDisponivel() : bool</text>
+    <line x1="0" y1="150" x2="240" y2="150" stroke="#333" stroke-width="0.6"/>
+    <text x="8" y="164" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getPreco() : float</text>
+    <text x="8" y="177" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getDescricao() : String</text>
+    <text x="8" y="190" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getTipoProduto():TipoProduto</text>
+    <text x="8" y="203" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+isDisponivel() : bool</text>
+    <text x="8" y="216" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+updateEstoque(qtd:int):void</text>
   </g>
 
-  <!-- Funcionario -->
-  <g transform="translate(570, 50)">
-    <rect width="240" height="210" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
-    <text x="120" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Funcionario</text>
-    <line x1="0" y1="22" x2="240" y2="22" stroke="#333" stroke-width="0.6"/>
+  <!-- Funcionario (mid-right) -->
+  <g transform="translate(580, 50)">
+    <rect width="250" height="230" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+    <text x="125" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Funcionario</text>
+    <line x1="0" y1="22" x2="250" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="37" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idFuncionario : int</text>
     <text x="8" y="50" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-nome : String</text>
     <text x="8" y="63" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-cpf : String</text>
@@ -167,17 +166,18 @@
     <text x="8" y="102" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-dataAdmissao : Date?</text>
     <text x="8" y="115" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-salario : float?</text>
     <text x="8" y="128" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idUsuario : int?</text>
-    <line x1="0" y1="137" x2="240" y2="137" stroke="#333" stroke-width="0.6"/>
-    <text x="8" y="152" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getNome() : String</text>
-    <text x="8" y="165" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getCpf() : String</text>
-    <text x="8" y="178" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getVendas() : Venda[]</text>
-    <text x="8" y="191" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getLogin() : Login</text>
-    <text x="8" y="204" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+createVenda(v : Venda) : Venda</text>
+    <line x1="0" y1="137" x2="250" y2="137" stroke="#333" stroke-width="0.6"/>
+    <text x="8" y="151" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getNome() : String</text>
+    <text x="8" y="164" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getCpf() : String</text>
+    <text x="8" y="177" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getVendas() : Venda[]</text>
+    <text x="8" y="190" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getLogin() : Login</text>
+    <text x="8" y="203" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+createVenda(v:Venda):Venda</text>
+    <text x="8" y="216" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getSalario() : float</text>
   </g>
 
-  <!-- Cliente -->
-  <g transform="translate(20, 310)">
-    <rect width="200" height="160" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+  <!-- Cliente (left) -->
+  <g transform="translate(20, 340)">
+    <rect width="200" height="170" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
     <text x="100" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Cliente</text>
     <line x1="0" y1="22" x2="200" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="38" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idCliente : int</text>
@@ -187,27 +187,28 @@
     <text x="8" y="94" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-endereco : String</text>
     <text x="8" y="108" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-email : String?</text>
     <line x1="0" y1="118" x2="200" y2="118" stroke="#333" stroke-width="0.6"/>
-    <text x="8" y="133" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getNome() : String</text>
-    <text x="8" y="146" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getVendas() : Venda[]</text>
+    <text x="8" y="132" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getNome() : String</text>
+    <text x="8" y="145" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getVendas() : Venda[]</text>
+    <text x="8" y="158" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+create(nome:String):Cliente</text>
   </g>
 
-  <!-- FormaPagto -->
-  <g transform="translate(20, 560)">
-    <rect width="170" height="100" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
-    <text x="85" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">FormaPagto</text>
-    <line x1="0" y1="22" x2="170" y2="22" stroke="#333" stroke-width="0.6"/>
+  <!-- FormaPagto (bottom left) -->
+  <g transform="translate(20, 590)">
+    <rect width="180" height="100" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+    <text x="90" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">FormaPagto</text>
+    <line x1="0" y1="22" x2="180" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="38" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idFormaPgto : int</text>
     <text x="8" y="52" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-descricao : String</text>
-    <line x1="0" y1="62" x2="170" y2="62" stroke="#333" stroke-width="0.6"/>
+    <line x1="0" y1="62" x2="180" y2="62" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="76" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getDescricao() : String</text>
     <text x="8" y="90" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getVendas() : Venda[]</text>
   </g>
 
-  <!-- Venda (Central) -->
-  <g transform="translate(300, 340)">
-    <rect width="340" height="280" fill="#FFFDE7" stroke="#333" stroke-width="1.2"/>
-    <text x="170" y="18" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Venda</text>
-    <line x1="0" y1="25" x2="340" y2="25" stroke="#333" stroke-width="0.6"/>
+  <!-- Venda (center) -->
+  <g transform="translate(300, 420)">
+    <rect width="360" height="300" fill="#FFFDE7" stroke="#333" stroke-width="1.2"/>
+    <text x="180" y="18" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Venda</text>
+    <line x1="0" y1="25" x2="360" y2="25" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="42" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idVenda : int</text>
     <text x="8" y="55" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-dataVenda : Date</text>
     <text x="8" y="68" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-produto : String</text>
@@ -222,81 +223,92 @@
     <text x="8" y="185" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idCliente : int?</text>
     <text x="8" y="198" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idFuncionario : int?</text>
     <text x="8" y="211" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idFormaPgto : int</text>
-    <line x1="0" y1="220" x2="340" y2="220" stroke="#333" stroke-width="0.6"/>
-    <text x="8" y="235" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+calcularTotal() : float</text>
-    <text x="8" y="248" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+finalizarVenda() : void</text>
-    <text x="8" y="261" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getCliente() : Cliente</text>
-    <text x="8" y="274" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getItens() : ItemVenda[]</text>
+    <line x1="0" y1="220" x2="360" y2="220" stroke="#333" stroke-width="0.6"/>
+    <text x="8" y="234" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+calcularTotal() : float</text>
+    <text x="8" y="247" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+finalizarVenda() : void</text>
+    <text x="8" y="260" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getCliente() : Cliente</text>
+    <text x="8" y="273" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getItens() : ItemVenda[]</text>
+    <text x="8" y="286" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getFormaPagto():FormaPagto</text>
   </g>
 
-  <!-- ItemVenda -->
-  <g transform="translate(760, 420)">
-    <rect width="210" height="110" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
-    <text x="105" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">ItemVenda</text>
-    <line x1="0" y1="22" x2="210" y2="22" stroke="#333" stroke-width="0.6"/>
+  <!-- ItemVenda (right) -->
+  <g transform="translate(760, 370)">
+    <rect width="220" height="130" fill="#FFFDE7" stroke="#333" stroke-width="1"/>
+    <text x="110" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">ItemVenda</text>
+    <line x1="0" y1="22" x2="220" y2="22" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="38" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idVenda : int (PK,FK)</text>
     <text x="8" y="52" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">-idProduto : int (PK,FK)</text>
-    <line x1="0" y1="62" x2="210" y2="62" stroke="#333" stroke-width="0.6"/>
+    <line x1="0" y1="62" x2="220" y2="62" stroke="#333" stroke-width="0.6"/>
     <text x="8" y="76" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getSubtotal() : float</text>
     <text x="8" y="89" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getProduto() : Produto</text>
     <text x="8" y="102" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+getVenda() : Venda</text>
+    <text x="8" y="115" font-family="Consolas, Menlo, monospace" font-size="9" fill="#333">+updateQtd(qtd:int):void</text>
   </g>
 
-  <!-- ==================== RELATIONSHIPS ==================== -->
+  <!-- ==================== RELATIONSHIPS with labels ==================== -->
 
-  <!-- TipoProduto 1 ── 0..* Produto -->
-  <line x1="180" y1="110" x2="260" y2="110" stroke="#333" stroke-width="1" marker-end="url(#assoc)"/>
-  <text x="185" y="104" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
-  <text x="248" y="104" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
+  <!-- TipoProduto "cadastra" Produto -->
+  <line x1="190" y1="115" x2="230" y2="115" stroke="#333" stroke-width="1"/>
+  <text x="195" y="108" font-family="Arial, sans-serif" font-size="8" fill="#333">cadastra</text>
+  <text x="194" y="130" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <text x="220" y="108" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
 
-  <!-- Login 1 ── 0..* Funcionario -->
-  <line x1="900" y1="120" x2="810" y2="120" stroke="#333" stroke-width="1" marker-start="url(#assoc)"/>
-  <text x="894" y="114" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
-  <text x="818" y="114" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
+  <!-- Login "gerencia" Funcionario -->
+  <line x1="880" y1="120" x2="830" y2="120" stroke="#333" stroke-width="1"/>
+  <text x="842" y="113" font-family="Arial, sans-serif" font-size="8" fill="#333">gerencia</text>
+  <text x="872" y="135" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <text x="838" y="135" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
 
-  <!-- Cliente 1 ── 0..* Venda -->
-  <path d="M120,470 L120,490 L370,490 L370,560" stroke="#333" stroke-width="1" fill="none" marker-end="url(#assoc)"/>
-  <text x="128" y="486" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
-  <text x="358" y="555" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
+  <!-- Cliente "realiza" Venda -->
+  <path d="M120,510 L120,540 L370,540 L370,580" stroke="#333" stroke-width="1" fill="none"/>
+  <text x="128" y="535" font-family="Arial, sans-serif" font-size="8" fill="#333">realiza</text>
+  <text x="128" y="555" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <text x="358" y="575" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
 
-  <!-- Funcionario 1 ── 0..* Venda -->
-  <path d="M690,260 L690,290 L510,290 L510,340" stroke="#333" stroke-width="1" fill="none" marker-end="url(#assoc)"/>
-  <text x="698" y="286" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
-  <text x="498" y="335" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
+  <!-- Funcionario "efetua" Venda -->
+  <path d="M705,280 L705,320 L520,320 L520,420" stroke="#333" stroke-width="1" fill="none"/>
+  <text x="660" y="315" font-family="Arial, sans-serif" font-size="8" fill="#333">efetua</text>
+  <text x="713" y="315" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <text x="508" y="415" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
 
-  <!-- FormaPagto 1 ── 0..* Venda -->
-  <path d="M105,660 L105,690 L460,690 L460,620" stroke="#333" stroke-width="1" fill="none" marker-end="url(#assoc)"/>
-  <text x="113" y="686" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
-  <text x="448" y="615" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
+  <!-- FormaPagto "pagamento" Venda -->
+  <path d="M110,690 L110,730 L480,730 L480,720" stroke="#333" stroke-width="1" fill="none"/>
+  <text x="200" y="725" font-family="Arial, sans-serif" font-size="8" fill="#333">pagamento</text>
+  <text x="118" y="725" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <text x="468" y="715" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
 
-  <!-- Venda 1 ── 0..* ItemVenda -->
-  <path d="M640,620 L640,650 L810,650 L810,580" stroke="#333" stroke-width="1" fill="none" marker-end="url(#assoc)"/>
-  <text x="648" y="646" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
-  <text x="798" y="575" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
+  <!-- Venda "contem" ItemVenda (composition) -->
+  <line x1="660" y1="570" x2="760" y2="500" stroke="#333" stroke-width="1" marker-start="url(#comp)"/>
+  <text x="675" y="525" font-family="Arial, sans-serif" font-size="8" fill="#333">contem</text>
+  <text x="648" y="565" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
+  <text x="748" y="495" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
 
-  <!-- ItemVenda 0..* ── 1 Produto -->
-  <path d="M865,420 L865,380 L640,380 L640,260" stroke="#333" stroke-width="1" fill="none" marker-end="url(#assoc)"/>
-  <text x="873" y="390" font-family="Arial, sans-serif" font-size="9" fill="#555">0..*</text>
-  <text x="648" y="270" font-family="Arial, sans-serif" font-size="9" fill="#555">1</text>
+  <!-- ItemVenda "referencia" Produto -->
+  <path d="M870,370 L870,300 L600,300 L600,280" stroke="#333" stroke-width="1" fill="none"/>
+  <text x="710" y="295" font-family="Arial, sans-serif" font-size="8" fill="#333">referencia</text>
+  <text x="878" y="310" font-family="Arial, sans-serif" font-size="8" fill="#555">0..*</text>
+  <text x="608" y="278" font-family="Arial, sans-serif" font-size="8" fill="#555">1</text>
 
   <!-- ==================== LEGEND ==================== -->
-  <g transform="translate(20, 710)">
-    <rect width="1060" height="55" rx="3" fill="#FFFDE7" stroke="#CCC" stroke-width="0.8"/>
-    <text x="16" y="18" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">LEGENDA</text>
-    <!-- Association -->
-    <line x1="20" y1="36" x2="50" y2="36" stroke="#333" stroke-width="1"/>
-    <path d="M44,32 L54,36 L44,40" fill="none" stroke="#333" stroke-width="1"/>
-    <text x="60" y="40" font-family="Arial, sans-serif" font-size="9" fill="#555">Associacao</text>
+  <g transform="translate(20, 740)">
+    <rect width="1060" height="50" rx="3" fill="#FFFDE7" stroke="#CCC" stroke-width="0.8"/>
+    <text x="16" y="16" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#333">LEGENDA</text>
     <!-- Composition -->
-    <path d="M140,36 L148,30 L156,36 L148,42 Z" fill="#333" stroke="#333" stroke-width="0.8"/>
-    <text x="164" y="40" font-family="Arial, sans-serif" font-size="9" fill="#555">Composicao</text>
+    <path d="M20,34 L28,28 L36,34 L28,40 Z" fill="#333" stroke="#333" stroke-width="0.8"/>
+    <text x="42" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">Composicao</text>
     <!-- Aggregation -->
-    <path d="M260,36 L268,30 L276,36 L268,42 Z" fill="#FFFDE7" stroke="#333" stroke-width="0.8"/>
-    <text x="284" y="40" font-family="Arial, sans-serif" font-size="9" fill="#555">Agregacao</text>
+    <path d="M120,34 L128,28 L136,34 L128,40 Z" fill="#FFFDE7" stroke="#333" stroke-width="0.8"/>
+    <text x="142" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">Agregacao</text>
+    <!-- Association -->
+    <line x1="220" y1="34" x2="250" y2="34" stroke="#333" stroke-width="1"/>
+    <path d="M244,30 L254,34 L244,38" fill="none" stroke="#333" stroke-width="1"/>
+    <text x="260" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">Associacao</text>
     <!-- Multiplicity -->
-    <text x="390" y="40" font-family="Arial, sans-serif" font-size="9" fill="#555">1 = Um | 0..* = Zero ou Mais | 1..* = Um ou Mais</text>
+    <text x="360" y="38" font-family="Arial, sans-serif" font-size="8" fill="#555">1 = Um | 0..* = Zero ou Mais</text>
+    <!-- Stereotypes -->
+    <text x="560" y="38" font-family="Arial, sans-serif" font-size="8" fill="#888">«create» «override» = Estereotipos</text>
     <!-- Notation -->
-    <text x="700" y="40" font-family="Arial, sans-serif" font-size="9" fill="#888">Notacao: AstahUML Class Diagram</text>
+    <text x="800" y="38" font-family="Arial, sans-serif" font-size="8" fill="#888">Notacao: AstahUML Class Diagram</text>
   </g>
 </svg>
 
@@ -306,15 +318,15 @@
 
 ### Relacionamentos
 
-| De | Cardinalidade | Para | FK |
-|----|:---:|------|-----|
-| TipoProduto | 1 : 0..* | Produto | `idCategoria` |
-| Login | 1 : 0..* | Funcionario | `idUsuario` |
-| Cliente | 1 : 0..* | Venda | `idCliente` |
-| Funcionario | 1 : 0..* | Venda | `idFuncionario` |
-| FormaPagto | 1 : 0..* | Venda | `idFormaPgto` |
-| Venda | 1 : 0..* | ItemVenda | `idVenda` + `idProduto` |
-| Produto | 1 : 0..* | ItemVenda | `idProduto` |
+| De | Cardinalidade | Relacionamento | Para | FK |
+|----|:---:|------|------|-----|
+| TipoProduto | 1 : 0..* | cadastra | Produto | `idCategoria` |
+| Login | 1 : 0..* | gerencia | Funcionario | `idUsuario` |
+| Cliente | 1 : 0..* | realiza | Venda | `idCliente` |
+| Funcionario | 1 : 0..* | efetua | Venda | `idFuncionario` |
+| FormaPagto | 1 : 0..* | pagamento | Venda | `idFormaPgto` |
+| Venda | 1 : 0..* | contem | ItemVenda | `idVenda` + `idProduto` |
+| Produto | 1 : 0..* | referencia | ItemVenda | `idProduto` |
 
 ---
 
