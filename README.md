@@ -73,203 +73,209 @@
 
 ---
 
-## Database Model (UML)
+## Database Model (UML — AstahUML Style)
 
 <div align="center">
 
-<svg width="1000" height="700" viewBox="0 0 1000 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1100" height="760" viewBox="0 0 1100 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="boxShadow" x="-3%" y="-3%" width="106%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+    <!-- Crow's foot (many) marker -->
+    <marker id="crow" markerWidth="18" markerHeight="18" refX="0" refY="9" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,9 L10,0" stroke="#333" stroke-width="1.4" fill="none"/>
+      <path d="M0,9 L10,18" stroke="#333" stroke-width="1.4" fill="none"/>
+      <path d="M0,9 L10,9" stroke="#333" stroke-width="1.4" fill="none"/>
+    </marker>
+    <!-- One marker (circle) -->
+    <marker id="oneCircle" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="4" fill="#FFFFFF" stroke="#333" stroke-width="1.4"/>
+    </marker>
+    <!-- Diamond (composition) -->
+    <marker id="diamond" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M7,0 L14,7 L7,14 L0,7 Z" fill="#FFFFFF" stroke="#333" stroke-width="1.4"/>
+    </marker>
+  </defs>
+
   <!-- Background -->
-  <rect width="1000" height="700" rx="12" fill="#FAFAFA"/>
-  
+  <rect width="1100" height="760" fill="#FFFFFF"/>
+
   <!-- Title -->
-  <text x="500" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1F2937" text-anchor="middle">Database Model — AstahUML Style</text>
-  
-  <!-- ==================== TABLES ==================== -->
-  
-  <!-- TipoProduto -->
-  <g transform="translate(20, 60)">
-    <rect width="180" height="120" rx="4" fill="#FFFFFF" stroke="#6D28D9" stroke-width="2"/>
-    <rect width="180" height="28" rx="4" fill="#6D28D9"/>
-    <text x="90" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">TipoProduto</text>
-    <line x1="0" y1="28" x2="180" y2="28" stroke="#6D28D9" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; idCategoria: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   categoria: VarChar(50)</text>
-    <line x1="0" y1="78" x2="180" y2="78" stroke="#E5E7EB" stroke-width="1"/>
-    <text x="10" y="96" font-family="Arial, sans-serif" font-size="9" fill="#9CA3AF">produtos: Produto[]</text>
-  </g>
-  
-  <!-- Produto -->
-  <g transform="translate(250, 60)">
-    <rect width="220" height="180" rx="4" fill="#FFFFFF" stroke="#7C3AED" stroke-width="2"/>
-    <rect width="220" height="28" rx="4" fill="#7C3AED"/>
-    <text x="110" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Produto</text>
-    <line x1="0" y1="28" x2="220" y2="28" stroke="#7C3AED" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; idProduto: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   codBarras: Decimal</text>
-    <text x="10" y="84" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   descricao: VarChar(50)</text>
-    <text x="10" y="102" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   categoria: VarChar(50)</text>
-    <text x="10" y="120" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   quantidade: Int</text>
-    <text x="10" y="138" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   preco: Float</text>
-    <text x="10" y="156" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   precoOriginal: Float?</text>
-    <text x="10" y="174" font-family="Arial, sans-serif" font-size="10" fill="#7C3AED">   idCategoria: Int (FK)</text>
-  </g>
-  
-  <!-- Funcionario -->
-  <g transform="translate(520, 60)">
-    <rect width="220" height="180" rx="4" fill="#FFFFFF" stroke="#0891B2" stroke-width="2"/>
-    <rect width="220" height="28" rx="4" fill="#0891B2"/>
-    <text x="110" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Funcionario</text>
-    <line x1="0" y1="28" x2="220" y2="28" stroke="#0891B2" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; idFuncionario: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   nome: VarChar(50)</text>
-    <text x="10" y="84" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   cpf: VarChar(50)</text>
-    <text x="10" y="102" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   telefone: VarChar(15)</text>
-    <text x="10" y="120" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   email: VarChar(50)</text>
-    <text x="10" y="138" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   dataAdmissao: Date?</text>
-    <text x="10" y="156" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   salario: Float?</text>
-    <text x="10" y="174" font-family="Arial, sans-serif" font-size="10" fill="#0891B2">   idUsuario: Int (FK)</text>
-  </g>
-  
+  <text x="550" y="30" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Floresca — Diagrama de Classes (ER)</text>
+
+  <!-- ==================== BALLOON CLASSES ==================== -->
+
   <!-- Login -->
-  <g transform="translate(780, 60)">
-    <rect width="190" height="100" rx="4" fill="#FFFFFF" stroke="#0D9488" stroke-width="2"/>
-    <rect width="190" height="28" rx="4" fill="#0D9488"/>
-    <text x="95" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Login</text>
-    <line x1="0" y1="28" x2="190" y2="28" stroke="#0D9488" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; iditemUsuario: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   descricao: VarChar(50)</text>
-    <line x1="0" y1="78" x2="190" y2="78" stroke="#E5E7EB" stroke-width="1"/>
-    <text x="10" y="96" font-family="Arial, sans-serif" font-size="9" fill="#9CA3AF">funcionarios: Funcionario[]</text>
+  <g transform="translate(880, 60)" filter="url(#boxShadow)">
+    <rect width="170" height="90" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <!-- Header -->
+    <rect x="0.6" y="0.6" width="168.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="85" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Login</text>
+    <!-- Separator -->
+    <line x1="0" y1="27" x2="170" y2="27" stroke="#333" stroke-width="0.8"/>
+    <!-- Attributes -->
+    <text x="10" y="46" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+iditemUsuario: Int</text>
+    <text x="10" y="62" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+descricao: VarChar</text>
+    <!-- Separator -->
+    <line x1="0" y1="72" x2="170" y2="72" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="86" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">funcionarios: Funcionario[]</text>
   </g>
-  
+
+  <!-- TipoProduto -->
+  <g transform="translate(20, 60)" filter="url(#boxShadow)">
+    <rect width="170" height="110" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <rect x="0.6" y="0.6" width="168.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="85" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">TipoProduto</text>
+    <line x1="0" y1="27" x2="170" y2="27" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="46" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+idCategoria: Int</text>
+    <text x="10" y="62" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+categoria: VarChar</text>
+    <line x1="0" y1="72" x2="170" y2="72" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="88" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">produtos: Produto[]</text>
+  </g>
+
+  <!-- Produto -->
+  <g transform="translate(260, 60)" filter="url(#boxShadow)">
+    <rect width="230" height="190" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <rect x="0.6" y="0.6" width="228.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="115" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Produto</text>
+    <line x1="0" y1="27" x2="230" y2="27" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="44" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+idProduto: Int</text>
+    <text x="10" y="58" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+codBarras: Decimal</text>
+    <text x="10" y="72" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+descricao: VarChar</text>
+    <text x="10" y="86" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+categoria: VarChar</text>
+    <text x="10" y="100" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+quantidade: Int</text>
+    <text x="10" y="114" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+preco: Float</text>
+    <text x="10" y="128" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+precoOriginal: Float?</text>
+    <text x="10" y="142" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+parcelas: Int?</text>
+    <line x1="0" y1="154" x2="230" y2="154" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="170" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#9333EA">-idCategoria: Int?</text>
+    <text x="10" y="186" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">tipoProduto: TipoProduto?</text>
+  </g>
+
+  <!-- Funcionario -->
+  <g transform="translate(560, 60)" filter="url(#boxShadow)">
+    <rect width="240" height="190" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <rect x="0.6" y="0.6" width="238.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="120" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Funcionario</text>
+    <line x1="0" y1="27" x2="240" y2="27" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="44" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+idFuncionario: Int</text>
+    <text x="10" y="58" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+nome: VarChar</text>
+    <text x="10" y="72" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+cpf: VarChar</text>
+    <text x="10" y="86" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+telefone: VarChar</text>
+    <text x="10" y="100" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+email: VarChar</text>
+    <text x="10" y="114" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+dataAdmissao: Date?</text>
+    <text x="10" y="128" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+salario: Float?</text>
+    <line x1="0" y1="140" x2="240" y2="140" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="156" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#0891B2">-idUsuario: Int?</text>
+    <text x="10" y="172" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">login: Login? · vendas: Venda[]</text>
+  </g>
+
   <!-- Cliente -->
-  <g transform="translate(20, 280)">
-    <rect width="200" height="140" rx="4" fill="#FFFFFF" stroke="#D97706" stroke-width="2"/>
-    <rect width="200" height="28" rx="4" fill="#D97706"/>
-    <text x="100" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Cliente</text>
-    <line x1="0" y1="28" x2="200" y2="28" stroke="#D97706" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; idCliente: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   nome: VarChar(50)</text>
-    <text x="10" y="84" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   cpf: VarChar(15)</text>
-    <text x="10" y="102" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   telefone: VarChar(15)</text>
-    <text x="10" y="120" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   endereco: VarChar(50)</text>
-    <text x="10" y="138" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   email: VarChar(50)?</text>
+  <g transform="translate(20, 300)" filter="url(#boxShadow)">
+    <rect width="200" height="150" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <rect x="0.6" y="0.6" width="198.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="100" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Cliente</text>
+    <line x1="0" y1="27" x2="200" y2="27" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="46" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+idCliente: Int</text>
+    <text x="10" y="62" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+nome: VarChar</text>
+    <text x="10" y="78" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+cpf: VarChar</text>
+    <text x="10" y="94" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+telefone: VarChar</text>
+    <text x="10" y="110" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+endereco: VarChar</text>
+    <text x="10" y="126" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+email: VarChar?</text>
+    <line x1="0" y1="136" x2="200" y2="136" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="148" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">vendas: Venda[]</text>
   </g>
-  
+
   <!-- FormaPagto -->
-  <g transform="translate(20, 480)">
-    <rect width="180" height="100" rx="4" fill="#FFFFFF" stroke="#DC2626" stroke-width="2"/>
-    <rect width="180" height="28" rx="4" fill="#DC2626"/>
-    <text x="90" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">FormaPagto</text>
-    <line x1="0" y1="28" x2="180" y2="28" stroke="#DC2626" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; idFormaPgto: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   descricao: VarChar(50)</text>
-    <line x1="0" y1="78" x2="180" y2="78" stroke="#E5E7EB" stroke-width="1"/>
-    <text x="10" y="96" font-family="Arial, sans-serif" font-size="9" fill="#9CA3AF">vendas: Venda[]</text>
+  <g transform="translate(20, 540)" filter="url(#boxShadow)">
+    <rect width="170" height="90" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <rect x="0.6" y="0.6" width="168.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="85" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">FormaPagto</text>
+    <line x1="0" y1="27" x2="170" y2="27" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="46" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+idFormaPgto: Int</text>
+    <text x="10" y="62" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+descricao: VarChar</text>
+    <line x1="0" y1="72" x2="170" y2="72" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="86" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">vendas: Venda[]</text>
   </g>
-  
+
   <!-- Venda (Central) -->
-  <g transform="translate(280, 300)">
-    <rect width="360" height="220" rx="4" fill="#FFFFFF" stroke="#6D28D9" stroke-width="3"/>
-    <rect width="360" height="28" rx="4" fill="#6D28D9"/>
-    <text x="180" y="19" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Venda</text>
-    <line x1="0" y1="28" x2="360" y2="28" stroke="#6D28D9" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#1F2937">&#128273; idVenda: Int</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   dataVenda: Date</text>
-    <text x="10" y="84" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   produto: VarChar(50)</text>
-    <text x="10" y="102" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   quantidade: Int</text>
-    <text x="10" y="120" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   preco: Float</text>
-    <text x="10" y="138" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   totalVenda: Float</text>
-    <text x="10" y="156" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   status: String</text>
-    <text x="10" y="174" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   dadosCliente: String?</text>
-    <text x="10" y="192" font-family="Arial, sans-serif" font-size="10" fill="#D97706">   idCliente: Int? (FK)</text>
-    <text x="10" y="210" font-family="Arial, sans-serif" font-size="10" fill="#0891B2">   idFuncionario: Int? (FK)</text>
-    <text x="190" y="192" font-family="Arial, sans-serif" font-size="10" fill="#DC2626">   idFormaPgto: Int (FK)</text>
-    <text x="190" y="210" font-family="Arial, sans-serif" font-size="10" fill="#6B7280">   itens: ItemVenda[]</text>
+  <g transform="translate(290, 330)" filter="url(#boxShadow)">
+    <rect width="380" height="260" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.4"/>
+    <rect x="0.6" y="0.6" width="378.8" height="28" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.8"/>
+    <text x="190" y="19" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Venda</text>
+    <line x1="0" y1="29" x2="380" y2="29" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="48" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#333">+idVenda: Int</text>
+    <text x="10" y="63" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+dataVenda: Date</text>
+    <text x="10" y="78" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+produto: VarChar</text>
+    <text x="10" y="93" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+quantidade: Int</text>
+    <text x="10" y="108" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+preco: Float</text>
+    <text x="10" y="123" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+totalVenda: Float</text>
+    <text x="10" y="138" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+status: String</text>
+    <text x="10" y="153" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+dadosCliente: String?</text>
+    <text x="10" y="168" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+observacoes: String?</text>
+    <text x="10" y="183" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+idPagamentoExterno: String?</text>
+    <text x="10" y="198" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#555">+linkPagamento: String?</text>
+    <line x1="0" y1="210" x2="380" y2="210" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="226" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#D97706">-idCliente: Int?</text>
+    <text x="10" y="241" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#0891B2">-idFuncionario: Int?</text>
+    <text x="200" y="226" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#DC2626">-idFormaPgto: Int</text>
+    <text x="200" y="241" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">itens: ItemVenda[]</text>
   </g>
-  
+
   <!-- ItemVenda -->
-  <g transform="translate(700, 380)">
-    <rect width="220" height="100" rx="4" fill="#FFFFFF" stroke="#9333EA" stroke-width="2"/>
-    <rect width="220" height="28" rx="4" fill="#9333EA"/>
-    <text x="110" y="19" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">ItemVenda</text>
-    <line x1="0" y1="28" x2="220" y2="28" stroke="#9333EA" stroke-width="1"/>
-    <text x="10" y="48" font-family="Arial, sans-serif" font-size="10" fill="#9333EA">&#128273; idVenda: Int (PK, FK)</text>
-    <text x="10" y="66" font-family="Arial, sans-serif" font-size="10" fill="#9333EA">&#128273; idProduto: Int (PK, FK)</text>
-    <line x1="0" y1="78" x2="220" y2="78" stroke="#E5E7EB" stroke-width="1"/>
-    <text x="10" y="96" font-family="Arial, sans-serif" font-size="9" fill="#9CA3AF">venda: Venda · produto: Produto</text>
+  <g transform="translate(750, 400)" filter="url(#boxShadow)">
+    <rect width="210" height="100" rx="3" fill="#FFFFFF" stroke="#333" stroke-width="1.2"/>
+    <rect x="0.6" y="0.6" width="208.8" height="26" rx="3" fill="#F0F4F8" stroke="#333" stroke-width="0.6"/>
+    <text x="105" y="18" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">ItemVenda</text>
+    <line x1="0" y1="27" x2="210" y2="27" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="46" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#9333EA">+idVenda: Int (PK,FK)</text>
+    <text x="10" y="62" font-family="Consolas, Menlo, monospace" font-size="9.5" fill="#9333EA">+idProduto: Int (PK,FK)</text>
+    <line x1="0" y1="72" x2="210" y2="72" stroke="#333" stroke-width="0.8"/>
+    <text x="10" y="88" font-family="Arial, sans-serif" font-size="8" fill="#888" font-style="italic">venda: Venda · produto: Produto</text>
   </g>
-  
-  <!-- ==================== RELATIONSHIPS ==================== -->
-  
-  <!-- TipoProduto 1 ──── N Produto -->
-  <line x1="200" y1="130" x2="250" y2="130" stroke="#6D28D9" stroke-width="2"/>
-  <text x="210" y="122" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#6D28D9">1</text>
-  <text x="240" y="122" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#6D28D9">N</text>
-  <text x="225" y="145" font-family="Arial, sans-serif" font-size="8" fill="#6B7280" text-anchor="middle">FK_idCategoria</text>
-  
-  <!-- Funcionario N ──── 1 Login -->
-  <line x1="740" y1="150" x2="780" y2="150" stroke="#0891B2" stroke-width="2"/>
-  <text x="748" y="142" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0891B2">N</text>
-  <text x="772" y="142" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0891B2">1</text>
-  
-  <!-- Cliente 1 ──── N Venda -->
-  <line x1="120" y1="420" x2="120" y2="460" stroke="#D97706" stroke-width="2" stroke-dasharray="6 3"/>
-  <line x1="120" y1="460" x2="350" y2="460" stroke="#D97706" stroke-width="2"/>
-  <text x="128" y="455" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#D97706">1</text>
-  <text x="340" y="455" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#D97706">N</text>
-  <text x="235" y="478" font-family="Arial, sans-serif" font-size="8" fill="#6B7280" text-anchor="middle">FK_idCliente</text>
-  
-  <!-- Funcionario 1 ──── N Venda -->
-  <line x1="630" y1="240" x2="630" y2="280" stroke="#0891B2" stroke-width="2" stroke-dasharray="6 3"/>
-  <line x1="630" y1="280" x2="500" y2="280" stroke="#0891B2" stroke-width="2"/>
-  <line x1="500" y1="280" x2="500" y2="300" stroke="#0891B2" stroke-width="2"/>
-  <text x="638" y="275" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0891B2">1</text>
-  <text x="492" y="295" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0891B2">N</text>
-  <text x="570" y="275" font-family="Arial, sans-serif" font-size="8" fill="#6B7280" text-anchor="middle">FK_idFuncionario</text>
-  
-  <!-- FormaPagto 1 ──── N Venda -->
-  <line x1="110" y1="580" x2="110" y2="600" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 3"/>
-  <line x1="110" y1="600" x2="350" y2="600" stroke="#DC2626" stroke-width="2"/>
-  <line x1="350" y1="600" x2="350" y2="520" stroke="#DC2626" stroke-width="2"/>
-  <text x="118" y="595" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#DC2626">1</text>
-  <text x="342" y="530" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#DC2626">N</text>
-  <text x="235" y="615" font-family="Arial, sans-serif" font-size="8" fill="#6B7280" text-anchor="middle">FK_idFormaPgto</text>
-  
-  <!-- Venda 1 ──── N ItemVenda -->
-  <line x1="640" y1="520" x2="640" y2="550" stroke="#9333EA" stroke-width="2"/>
-  <line x1="640" y1="550" x2="750" y2="550" stroke="#9333EA" stroke-width="2"/>
-  <line x1="750" y1="550" x2="750" y2="480" stroke="#9333EA" stroke-width="2"/>
-  <text x="648" y="545" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#9333EA">1</text>
-  <text x="742" y="490" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#9333EA">N</text>
-  
-  <!-- ItemVenda N ──── 1 Produto -->
-  <line x1="810" y1="380" x2="810" y2="340" stroke="#9333EA" stroke-width="2" stroke-dasharray="6 3"/>
-  <line x1="810" y1="340" x2="600" y2="340" stroke="#9333EA" stroke-width="2"/>
-  <line x1="600" y1="340" x2="600" y2="240" stroke="#9333EA" stroke-width="2"/>
-  <text x="818" y="350" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#9333EA">N</text>
-  <text x="608" y="250" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#9333EA">1</text>
-  
-  <!-- Legend -->
-  <rect x="20" y="640" width="960" height="50" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
-  <text x="40" y="660" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#6B7280">LEGEND:</text>
-  
-  <rect x="140" y="648" width="12" height="12" rx="2" fill="#6D28D9"/>
-  <text x="158" y="658" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">Primary</text>
-  
-  <rect x="220" y="648" width="12" height="12" rx="2" fill="#D97706"/>
-  <text x="238" y="658" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">Customer</text>
-  
-  <rect x="310" y="648" width="12" height="12" rx="2" fill="#0891B2"/>
-  <text x="328" y="658" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">Employee</text>
-  
-  <rect x="400" y="648" width="12" height="12" rx="2" fill="#DC2626"/>
-  <text x="418" y="658" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">Payment</text>
-  
-  <rect x="490" y="648" width="12" height="12" rx="2" fill="#9333EA"/>
-  <text x="508" y="658" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">Junction</text>
-  
-  <text x="600" y="660" font-family="Arial, sans-serif" font-size="9" fill="#6B7280">&#128273; = PK · FK = Foreign Key · 1:N = One-to-Many · N:M = Many-to-Many</text>
+
+  <!-- ==================== RELATIONSHIP LINES ==================== -->
+
+  <!-- TipoProduto 1 ── N Produto -->
+  <line x1="190" y1="120" x2="260" y2="120" stroke="#333" stroke-width="1.2" marker-start="url(#oneCircle)" marker-end="url(#crow)"/>
+
+  <!-- Login 1 ── N Funcionario -->
+  <line x1="950" y1="150" x2="800" y2="150" stroke="#333" stroke-width="1.2" marker-start="url(#oneCircle)" marker-end="url(#crow)"/>
+
+  <!-- Cliente 1 ── N Venda -->
+  <path d="M120,450 L120,470 L360,470 L360,530" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#oneCircle)" marker-end="url(#crow)"/>
+
+  <!-- Funcionario 1 ── N Venda -->
+  <path d="M680,250 L680,280 L500,280 L500,330" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#oneCircle)" marker-end="url(#crow)"/>
+
+  <!-- FormaPagto 1 ── N Venda -->
+  <path d="M105,630 L105,660 L440,660 L440,590" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#oneCircle)" marker-end="url(#crow)"/>
+
+  <!-- Venda 1 ── N ItemVenda -->
+  <path d="M670,590 L670,620 L800,620 L800,560" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#oneCircle)" marker-end="url(#crow)"/>
+
+  <!-- ItemVenda N ── 1 Produto -->
+  <path d="M855,400 L855,360 L620,360 L620,250" stroke="#333" stroke-width="1.2" fill="none" marker-start="url(#crow)" marker-end="url(#oneCircle)"/>
+
+  <!-- ==================== LEGEND ==================== -->
+  <g transform="translate(20, 690)">
+    <rect width="1060" height="55" rx="4" fill="#FFFFFF" stroke="#DDD" stroke-width="1"/>
+    <text x="16" y="20" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">LEGENDA</text>
+    <!-- One -->
+    <circle cx="30" cy="38" r="4.5" fill="#FFFFFF" stroke="#333" stroke-width="1.4"/>
+    <text x="42" y="42" font-family="Arial, sans-serif" font-size="9" fill="#555">1 (Um)</text>
+    <!-- Many -->
+    <path d="M88,32 L98,38 L88,44 M92,35 L98,38 L92,41" stroke="#333" stroke-width="1.3" fill="none"/>
+    <text x="106" y="42" font-family="Arial, sans-serif" font-size="9" fill="#555">N (Muitos)</text>
+    <!-- FK color -->
+    <rect x="180" y="32" width="10" height="10" rx="2" fill="#9333EA"/>
+    <text x="196" y="42" font-family="Arial, sans-serif" font-size="9" fill="#555">Chave Estrangeira (FK)</text>
+    <!-- PK -->
+    <text x="340" y="42" font-family="Arial, sans-serif" font-size="9" fill="#555">+atributo = publico · -atributo = privado</text>
+    <!-- Notation -->
+    <text x="640" y="42" font-family="Arial, sans-serif" font-size="9" fill="#888">Notacao: AstahUML Class Diagram</text>
+  </g>
 </svg>
 
 </div>
@@ -278,15 +284,15 @@
 
 ### Relacionamentos
 
-```
-TipoProduto ──1:N──▶ Produto
-Cliente ──1:N──▶ Venda
-Funcionario ──1:N──▶ Venda
-Funcionario ◀──N:1── Login
-FormaPagto ──1:N──▶ Venda
-Venda ──1:N──▶ ItemVenda
-Produto ◀──N:1── ItemVenda
-```
+| De | Cardinalidade | Para | FK |
+|----|:---:|------|-----|
+| TipoProduto | 1:N | Produto | `idCategoria` |
+| Login | 1:N | Funcionario | `idUsuario` |
+| Cliente | 1:N | Venda | `idCliente` |
+| Funcionario | 1:N | Venda | `idFuncionario` |
+| FormaPagto | 1:N | Venda | `idFormaPgto` |
+| Venda | 1:N | ItemVenda | `idVenda` + `idProduto` |
+| Produto | 1:N | ItemVenda | `idProduto` |
 
 ---
 
