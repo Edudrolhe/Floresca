@@ -126,107 +126,156 @@ async function main() {
   // 5. Produto
   await prisma.produto.upsert({
     where: { idProduto: 1 },
-    update: {},
+    update: {
+      descricao: 'ORQUÍDEA ROSA',
+      categoria: 'FLORES',
+      preco: 50.0,
+      precoOriginal: null,
+      parcelas: 1,
+      idCategoria: 1,
+    },
     create: {
       idProduto: 1,
       codBarras: 1234567890123,
-      descricao: 'ORQUIDEA AMOR',
+      descricao: 'ORQUÍDEA ROSA',
       categoria: 'FLORES',
       quantidade: 10,
-      preco: 165.0,
-      precoOriginal: 195.0,
-      parcelas: 2,
+      preco: 50.0,
+      precoOriginal: null,
+      parcelas: 1,
       idCategoria: 1,
     },
   })
 
   await prisma.produto.upsert({
     where: { idProduto: 2 },
-    update: {},
+    update: {
+      descricao: 'CESTA ROMÂNTICA',
+      categoria: 'CESTAS',
+      preco: 45.0,
+      precoOriginal: 55.0,
+      parcelas: 3,
+      idCategoria: 4,
+    },
     create: {
       idProduto: 2,
       codBarras: 1234567890124,
-      descricao: 'RAMO DE LÍRIO',
-      categoria: 'FLORES',
+      descricao: 'CESTA ROMÂNTICA',
+      categoria: 'CESTAS',
       quantidade: 8,
       preco: 45.0,
-      precoOriginal: null,
-      parcelas: 1,
-      idCategoria: 1,
-    },
-  })
-
-  await prisma.produto.upsert({
-    where: { idProduto: 3 },
-    update: {},
-    create: {
-      idProduto: 3,
-      codBarras: 1234567890125,
-      descricao: 'ARRANJO TROPICAL',
-      categoria: 'ARRANJOS',
-      quantidade: 5,
-      preco: 65.0,
-      precoOriginal: null,
-      parcelas: 1,
-      idCategoria: 3,
-    },
-  })
-
-  await prisma.produto.upsert({
-    where: { idProduto: 4 },
-    update: {},
-    create: {
-      idProduto: 4,
-      codBarras: 1234567890126,
-      descricao: 'CESTA COM FLORES',
-      categoria: 'CESTAS',
-      quantidade: 3,
-      preco: 80.0,
-      precoOriginal: null,
-      parcelas: 1,
+      precoOriginal: 55.0,
+      parcelas: 3,
       idCategoria: 4,
     },
   })
 
   await prisma.produto.upsert({
-    where: { idProduto: 5 },
-    update: {},
+    where: { idProduto: 3 },
+    update: {
+      descricao: 'BUQUÊ COLORIDO',
+      categoria: 'BUQUÊS',
+      preco: 65.0,
+      precoOriginal: 85.0,
+      parcelas: 2,
+      idCategoria: 2,
+    },
     create: {
-      idProduto: 5,
-      codBarras: 1234567890127,
-      descricao: 'ORQUÍDEA BRANCA',
+      idProduto: 3,
+      codBarras: 1234567890125,
+      descricao: 'BUQUÊ COLORIDO',
+      categoria: 'BUQUÊS',
+      quantidade: 5,
+      preco: 65.0,
+      precoOriginal: 85.0,
+      parcelas: 2,
+      idCategoria: 2,
+    },
+  })
+
+  await prisma.produto.upsert({
+    where: { idProduto: 4 },
+    update: {
+      descricao: 'ORQUÍDEA BORGONHA',
       categoria: 'FLORES',
-      quantidade: 6,
-      preco: 55.0,
+      preco: 80.0,
       precoOriginal: null,
       parcelas: 1,
       idCategoria: 1,
+    },
+    create: {
+      idProduto: 4,
+      codBarras: 1234567890126,
+      descricao: 'ORQUÍDEA BORGONHA',
+      categoria: 'FLORES',
+      quantidade: 3,
+      preco: 80.0,
+      precoOriginal: null,
+      parcelas: 1,
+      idCategoria: 1,
+    },
+  })
+
+  await prisma.produto.upsert({
+    where: { idProduto: 5 },
+    update: {
+      descricao: 'BUQUÊ DE ROSAS ROSAS',
+      categoria: 'BUQUÊS',
+      preco: 55.0,
+      precoOriginal: 70.0,
+      parcelas: 2,
+      idCategoria: 2,
+    },
+    create: {
+      idProduto: 5,
+      codBarras: 1234567890127,
+      descricao: 'BUQUÊ DE ROSAS ROSAS',
+      categoria: 'BUQUÊS',
+      quantidade: 6,
+      preco: 55.0,
+      precoOriginal: 70.0,
+      parcelas: 2,
+      idCategoria: 2,
     },
   })
 
   await prisma.produto.upsert({
     where: { idProduto: 6 },
-    update: {},
+    update: {
+      descricao: 'BUQUÊ DE ROSAS',
+      categoria: 'BUQUÊS',
+      preco: 40.0,
+      precoOriginal: 55.0,
+      parcelas: 2,
+      idCategoria: 2,
+    },
     create: {
       idProduto: 6,
       codBarras: 1234567890128,
-      descricao: 'GIRASSÓIS',
-      categoria: 'FLORES',
+      descricao: 'BUQUÊ DE ROSAS',
+      categoria: 'BUQUÊS',
       quantidade: 12,
       preco: 40.0,
-      precoOriginal: null,
-      parcelas: 1,
-      idCategoria: 1,
+      precoOriginal: 55.0,
+      parcelas: 2,
+      idCategoria: 2,
     },
   })
 
   await prisma.produto.upsert({
     where: { idProduto: 7 },
-    update: {},
+    update: {
+      descricao: 'BUQUÊ VERMELHO',
+      categoria: 'BUQUÊS',
+      preco: 70.0,
+      precoOriginal: null,
+      parcelas: 1,
+      idCategoria: 2,
+    },
     create: {
       idProduto: 7,
       codBarras: 1234567890129,
-      descricao: 'MIX DE FLORES',
+      descricao: 'BUQUÊ VERMELHO',
       categoria: 'BUQUÊS',
       quantidade: 7,
       preco: 70.0,
@@ -238,49 +287,70 @@ async function main() {
 
   await prisma.produto.upsert({
     where: { idProduto: 8 },
-    update: {},
+    update: {
+      descricao: 'ORQUÍDEA ROSA',
+      categoria: 'FLORES',
+      preco: 55.0,
+      precoOriginal: 70.0,
+      parcelas: 2,
+      idCategoria: 1,
+    },
     create: {
       idProduto: 8,
       codBarras: 1234567890130,
-      descricao: 'ROSAS VERMELHAS',
+      descricao: 'ORQUÍDEA ROSA',
       categoria: 'FLORES',
       quantidade: 15,
       preco: 55.0,
-      precoOriginal: null,
-      parcelas: 1,
+      precoOriginal: 70.0,
+      parcelas: 2,
       idCategoria: 1,
     },
   })
 
   await prisma.produto.upsert({
     where: { idProduto: 9 },
-    update: {},
+    update: {
+      descricao: 'CESTA ROMÂNTICA',
+      categoria: 'CESTAS',
+      preco: 35.0,
+      precoOriginal: null,
+      parcelas: 1,
+      idCategoria: 4,
+    },
     create: {
       idProduto: 9,
       codBarras: 1234567890131,
-      descricao: 'LAVANDA PERFUMADA',
-      categoria: 'FLORES',
+      descricao: 'CESTA ROMÂNTICA',
+      categoria: 'CESTAS',
       quantidade: 9,
       preco: 35.0,
       precoOriginal: null,
       parcelas: 1,
-      idCategoria: 1,
+      idCategoria: 4,
     },
   })
 
   await prisma.produto.upsert({
     where: { idProduto: 10 },
-    update: {},
+    update: {
+      descricao: 'BUQUÊ COLORIDO',
+      categoria: 'BUQUÊS',
+      preco: 120.0,
+      precoOriginal: 150.0,
+      parcelas: 3,
+      idCategoria: 2,
+    },
     create: {
       idProduto: 10,
       codBarras: 1234567890132,
-      descricao: 'CESTA ROMÂNTICA',
-      categoria: 'CESTAS',
+      descricao: 'BUQUÊ COLORIDO',
+      categoria: 'BUQUÊS',
       quantidade: 4,
       preco: 120.0,
-      precoOriginal: null,
-      parcelas: 1,
-      idCategoria: 4,
+      precoOriginal: 150.0,
+      parcelas: 3,
+      idCategoria: 2,
     },
   })
 
@@ -333,11 +403,13 @@ async function main() {
   // 7. Vendas
   await prisma.venda.upsert({
     where: { idVenda: 1 },
-    update: {},
+    update: {
+      produto: 'ORQUÍDEA ROSA',
+    },
     create: {
       idVenda: 1,
       dataVenda: new Date('2026-09-01'),
-      produto: 'BUQUÊ DE ROSAS',
+      produto: 'ORQUÍDEA ROSA',
       quantidade: 2,
       preco: 50.0,
       totalVenda: 100.0,
@@ -349,11 +421,13 @@ async function main() {
 
   await prisma.venda.upsert({
     where: { idVenda: 2 },
-    update: {},
+    update: {
+      produto: 'BUQUÊ COLORIDO',
+    },
     create: {
       idVenda: 2,
       dataVenda: new Date('2026-09-02'),
-      produto: 'ARRANJO TROPICAL',
+      produto: 'BUQUÊ COLORIDO',
       quantidade: 1,
       preco: 65.0,
       totalVenda: 65.0,
@@ -365,11 +439,13 @@ async function main() {
 
   await prisma.venda.upsert({
     where: { idVenda: 3 },
-    update: {},
+    update: {
+      produto: 'ORQUÍDEA BORGONHA',
+    },
     create: {
       idVenda: 3,
       dataVenda: new Date('2026-09-03'),
-      produto: 'CESTA COM FLORES',
+      produto: 'ORQUÍDEA BORGONHA',
       quantidade: 1,
       preco: 80.0,
       totalVenda: 80.0,
@@ -381,11 +457,13 @@ async function main() {
 
   await prisma.venda.upsert({
     where: { idVenda: 4 },
-    update: {},
+    update: {
+      produto: 'BUQUÊ VERMELHO',
+    },
     create: {
       idVenda: 4,
       dataVenda: new Date('2026-09-05'),
-      produto: 'MIX DE FLORES',
+      produto: 'BUQUÊ VERMELHO',
       quantidade: 3,
       preco: 70.0,
       totalVenda: 210.0,
@@ -398,14 +476,16 @@ async function main() {
   // Venda realizada apenas por cliente externo (sem funcionário)
   await prisma.venda.upsert({
     where: { idVenda: 5 },
-    update: {},
+    update: {
+      produto: 'ORQUÍDEA ROSA',
+    },
     create: {
       idVenda: 5,
       dataVenda: new Date('2026-09-06'),
-      produto: 'ORQUIDEA AMOR',
+      produto: 'ORQUÍDEA ROSA',
       quantidade: 1,
-      preco: 165.0,
-      totalVenda: 165.0,
+      preco: 50.0,
+      totalVenda: 50.0,
       idFormaPgto: 5,
       idFuncionario: null,
       idCliente: 2,

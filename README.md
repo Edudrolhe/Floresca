@@ -1,253 +1,180 @@
-# Floresca Floricultura
+<div align="center">
 
-Sistema de gerenciamento para floricultura desenvolvido com Next.js 16, React 19, Prisma 8 e PostgreSQL.
+<img src="public/Logo.png" alt="Floresca Floricultura" width="400" />
 
-## Visão Geral
+### E-commerce completo para floricultura
 
-O **Floresca** é uma aplicação full-stack para gerenciamento de operações de uma floricultura, incluindo cadastro de clientes, funcionários, produtos, vendas e formas de pagamento.
+**Next.js 16** · **React 19** · **Prisma 8** · **PostgreSQL** · **Mercado Pago**
+
+[![Next.js](https://img.shields.io/badge/Next.js-16.3.4-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19.2.8-61DAFB?style=flat-square&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
+[![Prisma](https://img.shields.io/badge/Prisma_ORM-8-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io)
+[![License](https://img.shields.io/badge/license-private-red?style=flat-square)](#)
+
+</div>
+
+---
+
+## Screenshots
+
+<div align="center">
+
+| Home | Produto | Carrinho |
+|:---:|:---:|:---:|
+| <img src="public/floresca /Tela inicio.png" width="400" alt="Tela Inicio"> | <img src="public/floresca /tela fechar produto.png" width="400" alt="Tela Produto"> | <img src="public/floresca /carrinho.png" width="400" alt="Carrinho"> |
+
+| Checkout | Admin Panel | Cadastro Produto |
+|:---:|:---:|:---:|
+| <img src="public/floresca /download.png" width="400" alt="Checkout"> | <img src="public/floresca /painal adm.png" width="400" alt="Painel Admin"> | <img src="public/floresca /cadastro produto.png" width="400" alt="Cadastro Produto"> |
+
+</div>
+
+---
 
 ## Funcionalidades
 
-- **Cadastro de Clientes** - Gerenciamento completo de clientes (nome, CPF, telefone, endereço, email)
-- **Gestão de Funcionários** - Cadastro e administração de funcionários com vínculo ao sistema de login
-- **Controle de Produtos** - Cadastro de produtos com código de barras, categoria, estoque e preços
-- **Registro de Vendas** - Sistema de vendas com cálculo automático de totais e itens da venda
-- **Formas de Pagamento** - Suporte a múltiplas formas de pagamento (cartão crédito, débito, vale refeição, dinheiro)
-- **Categorias de Produtos** - Organização de produtos por categorias (ex: FLORES)
+### Loja Virtual
+- **Carousel de banners** com promoções e destaques
+- **Busca inteligente** por produtos
+- **7 categorias** — Arranjos, Bouquets, Cestas, Girassóis, Mix, Orquídeas, Ramos
+- **Favoritos** salvos no navegador
+- **Carrinho de compras** com cálculo automático de frete (grátis acima de R$ 100)
+- **Checkout completo** com formulário de dados e endereço de entrega
+
+### Pagamento Integrado
+- **Pix** via Mercado Pago (redirecionamento)
+- **Cartão de crédito** até 12x sem juros (Brick embutido)
+- **Webhook** para atualização automática de status
+- **Email de confirmação** automático via Resend
+
+### Painel Administrativo
+- **Dashboard** com métricas (produtos, categorias, estoque, valor total)
+- **CRUD completo** — Produtos, Funcionários, Vendas
+- **Upload de imagens** com validação de tipo e tamanho
+- **Autenticação** via Google OAuth (NextAuth)
+
+---
 
 ## Tech Stack
 
-| Tecnologia     | Versão       | Propósito                       |
-| -------------- | ------------ | ------------------------------- |
-| Next.js        | 16.3.4       | Framework React (App Router)    |
-| React          | 19.2.8       | Biblioteca de UI                |
-| TypeScript     | ^5           | Tipagem estática                |
-| Tailwind CSS   | ^4           | Framework CSS utility-first     |
-| Prisma         | ^8.0.0-rc.13 | ORM (Release Candidate)         |
-| PostgreSQL     | 15+          | Banco de dados                  |
-| Docker Compose | -            | Serviço local de banco de dados |
+| Camada | Tecnologia | Versão |
+|--------|-----------|--------|
+| Framework | Next.js (App Router) | 16.3.4 |
+| UI | React | 19.2.8 |
+| Estilo | Tailwind CSS + shadcn/ui | 4 |
+| Linguagem | TypeScript | 5 |
+| ORM | Prisma (Composer) | 8.0.0-rc.13 |
+| Banco | PostgreSQL | 15+ |
+| Pagamento | Mercado Pago SDK | 3.6.0 |
+| Email | Resend + React Email | 6.27.0 |
+| Auth | NextAuth (Google OAuth) | 5.0.0-beta.32 |
+| Validação | Zod | 4.5.4 |
 
-## Pré-requisitos
+---
+
+## Quick Start
+
+### Pré-requisitos
 
 - Node.js v18+
 - npm
-- PostgreSQL 15+ (via Docker ou Neon cloud)
-- Cliente `psql` (para seed do banco)
+- PostgreSQL 15+ (Docker ou Neon)
 
-## Instalação e Configuração
-
-### 1. Instalar dependências
+### Instalação
 
 ```bash
+# 1. Clonar o repositório
+git clone https://github.com/seu-usuario/floresca-floricultura.git
+cd floresca-floricultura
+
+# 2. Instalar dependências
 npm install
-```
 
-### 2. Configurar banco de dados
-
-**Opção A - Docker (local):**
-
-```bash
+# 3. Configurar banco (Docker)
 docker-compose up -d
-```
 
-Inicia PostgreSQL 15 na porta 5432 com:
-
-- Usuário: `postgres`
-- Senha: `postgres`
-- Banco: `mydb`
-
-**Opção B - Neon (cloud):**
-
-A configuração já está no arquivo `.env` com a conexão do Neon.
-
-### 3. Configurar schema do banco
-
-```bash
+# 4. Rodar migrações
 npm run db:update
 npm run db:migrate
-```
 
-### 4. Gerar contrato Prisma
-
-```bash
+# 5. Gerar contratos Prisma
 npm run contract:emit
-```
 
-### 5. Popula dados iniciais
-
-```bash
+# 6. Popular dados iniciais
 npm run db:seed
-```
 
-### 6. Iniciar servidor de desenvolvimento
-
-```bash
+# 7. Iniciar servidor
 npm run dev
 ```
 
 Acesse [http://localhost:3000](http://localhost:3000)
 
-## Scripts Disponíveis
-
-| Script          | Comando                | Descrição                    |
-| --------------- | ---------------------- | ---------------------------- |
-| `dev`           | `next dev`             | Servidor de desenvolvimento  |
-| `build`         | `next build`           | Build para produção          |
-| `start`         | `next start`           | Iniciar servidor de produção |
-| `lint`          | `eslint`               | Verificação de código        |
-| `db:update`     | `prisma db update`     | Atualizar banco              |
-| `db:migrate`    | `prisma db migrate`    | Executar migrações           |
-| `db:seed`       | `bash seed.sh`         | Popular dados iniciais       |
-| `contract:emit` | `prisma contract emit` | Gerar contratos TypeScript   |
+---
 
 ## Estrutura do Projeto
 
 ```
 floresca-floricultura/
-├── app/                          # Next.js App Router (páginas)
-│   ├── globals.css               # Estilos globais (Tailwind CSS)
-│   ├── layout.tsx                # Layout raiz
-│   └── page.tsx                  # Página inicial
-│
-├── src/
-│   └── prisma/                   # Camada de banco de dados
-│       ├── contract.prisma       # Schema Prisma
-│       ├── contract.json         # Contrato gerado
-│       ├── contract.d.ts         # Tipos TypeScript
-│       ├── composer.ts           # Configuração Prisma Composer
-│       └── db.ts                 # Conexão singleton
-│
-├── migrations/                   # Histórico de migrações
-├── public/                       # Assets estáticos
-├── docker-compose.yml            # Serviço PostgreSQL local
-├── prisma.config.ts              # Configuração Prisma ORM
-├── seed.sh                       # Script de seed
-└── package.json                  # Dependências
+├── app/
+│   ├── _components/        # Componentes React
+│   │   ├── checkout/       # Formulários de checkout
+│   │   ├── admin/          # Componentes do painel admin
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── header.tsx      # Cabeçalho responsivo
+│   │   ├── footer.tsx      # Rodapé
+│   │   └── product-grid.tsx # Grid de produtos
+│   ├── _lib/
+│   │   └── actions/        # Server Actions (auth, products, payments)
+│   ├── api/                # API Routes
+│   │   └── webhooks/       # Webhook Mercado Pago
+│   ├── admin/              # Painel administrativo
+│   ├── carrinho/           # Carrinho de compras
+│   ├── checkout/           # Finalização de pedido
+│   ├── login/              # Autenticação
+│   └── produto/            # Detalhe do produto
+├── src/prisma/             # Schema, migrations e conexão
+├── public/                 # Assets estáticos
+└── migrations/             # Histórico de migrações
 ```
 
-## Modelo de Dados
+---
 
-### Tabelas Principais
+## Scripts
 
-#### Cliente
+| Comando | Descrição |
+|---------|-----------|
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm run build` | Build para produção |
+| `npm run start` | Iniciar produção |
+| `npm run lint` | Verificação de código |
+| `npm run db:update` | Atualizar schema do banco |
+| `npm run db:migrate` | Executar migrações |
+| `npm run db:seed` | Popular dados iniciais |
+| `npm run contract:emit` | Gerar contratos TypeScript |
 
-| Campo     | Tipo         | Descrição              |
-| --------- | ------------ | ---------------------- |
-| idCliente | Int (PK)     | Identificador único    |
-| nome      | VarChar(50)  | Nome do cliente        |
-| cpf       | VarChar(15)  | CPF (documento fiscal) |
-| telefone  | VarChar(15)  | Telefone de contato    |
-| endereco  | VarChar(50)  | Endereço completo      |
-| email     | VarChar(50)? | Email (opcional)       |
+---
 
-#### Produto
+## Deploy
 
-| Campo       | Tipo        | Descrição              |
-| ----------- | ----------- | ---------------------- |
-| idProduto   | Int (PK)    | Identificador único    |
-| codBarras   | Decimal     | Código de barras       |
-| descricao   | VarChar(50) | Descrição do produto   |
-| categoria   | VarChar(50) | Nome da categoria      |
-| quantidade  | Int         | Quantidade em estoque  |
-| preco       | Float       | Preço unitário         |
-| idCategoria | Int (FK)    | Chave para TipoProduto |
+### Vercel (Recomendado)
 
-#### Funcionario
+1. Conecte o repositório ao [Vercel](https://vercel.com)
+2. Configure as variáveis de ambiente:
+   - `DATABASE_URL` — Conexão com PostgreSQL
+   - `AUTH_SECRET` — Secret do NextAuth
+   - `GOOGLE_CLIENT_ID` — Client ID do Google
+   - `GOOGLE_CLIENT_SECRET` — Client Secret do Google
+   - `MERCADO_PAGO_ACCESS_TOKEN` — Token de produção MP
+   - `NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY` — Chave pública MP
+   - `RESEND_API_KEY` — Chave da API Resend
+3. Deploy automático a cada push no `main`
 
-| Campo         | Tipo        | Descrição           |
-| ------------- | ----------- | ------------------- |
-| idFuncionario | Int (PK)    | Identificador único |
-| nome          | VarChar(50) | Nome do funcionário |
-| cpf           | VarChar(50) | CPF                 |
-| telefone      | VarChar(15) | Telefone            |
-| email         | VarChar(50) | Email               |
-| dataAdmissao  | Date?       | Data de admissão    |
-| salario       | Float?      | Salário             |
-| idUsuario     | Int (FK)    | Chave para Login    |
+---
 
-#### Venda
+<div align="center">
 
-| Campo         | Tipo        | Descrição               |
-| ------------- | ----------- | ----------------------- |
-| idVenda       | Int (PK)    | Identificador único     |
-| dataVenda     | Date        | Data da venda           |
-| produto       | VarChar(50) | Nome do produto vendido |
-| quantidade    | Int         | Quantidade vendida      |
-| preco         | Float       | Preço unitário          |
-| totalVenda    | Float       | Valor total da venda    |
-| idFormaPgto   | Int (FK)    | Forma de pagamento      |
-| idFuncionario | Int (FK)    | Funcionário responsável |
-| idCliente     | Int (FK)?   | Cliente (opcional)      |
+**Floresca Floricultura** · Desenvolvido com Next.js 16 e Prisma 8
 
-#### Login
-
-| Campo         | Tipo        | Descrição           |
-| ------------- | ----------- | ------------------- |
-| iditemUsuario | Int (PK)    | Identificador único |
-| descricao     | VarChar(50) | Perfil (ex: "ADM")  |
-
-#### TipoProduto
-
-| Campo       | Tipo        | Descrição           |
-| ----------- | ----------- | ------------------- |
-| idCategoria | Int (PK)    | Identificador único |
-| categoria   | VarChar(50) | Nome da categoria   |
-
-#### FormaPagto
-
-| Campo       | Tipo        | Descrição                  |
-| ----------- | ----------- | -------------------------- |
-| idFormaPgto | Int (PK)    | Identificador único        |
-| descricao   | VarChar(50) | Nome da forma de pagamento |
-
-#### ItemVenda
-
-| Campo     | Tipo     | Descrição       |
-| --------- | -------- | --------------- |
-| idVenda   | Int (PK) | FK para Venda   |
-| idProduto | Int (PK) | FK para Produto |
-
-### Relacionamentos
-
-```
-Cliente ──< Venda (1:N)
-Funcionario ──< Venda (1:N)
-Funcionario >── Login (N:1)
-TipoProduto ──< Produto (1:N)
-Venda ──< ItemVenda (1:N)
-ItemVenda >── Produto (N:1)
-Venda >── FormaPagto (N:1)
-```
-
-## Dados Iniciais (Seed)
-
-O script `seed.sh` insere os seguintes registros:
-
-- **Login:** ADM (perfil administrador)
-- **Cliente:** JOÃO DIAS
-- **Funcionário:** PEDRO SOARES
-- **Categoria:** FLORES
-- **Produto:** BUQUÊ DE ROSAS (10 em estoque, R$ 50,00)
-- **Formas de Pagamento:** Cartão Crédito, Cartão Débito, Vale Refeição, Dinheiro
-- **Venda exemplo:** 2 BUQUÊS DE ROSAS = R$ 100,00
-
-## Build e Deploy
-
-### Build para produção
-
-```bash
-npm run build
-npm run start
-```
-
-### Deploy no Vercel
-
-O projeto está configurado para deploy fácil no [Vercel](https://vercel.com):
-
-1. Conecte o repositório ao Vercel
-2. Configure a variável de ambiente `DATABASE_URL`
-3. O deploy será automático a cada push
-
-## Licença
-
-Projeto privado - Floresca Floricultura 2024
+</div>

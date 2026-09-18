@@ -40,4 +40,19 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# AI agent tools
+.agents/
+.claude/
+.cursor/
+.devin/
+
+# IDE
+.vscode/
+
+# Skills
+skills-lock.json
+
+# Docs
+docs/
+
 .env

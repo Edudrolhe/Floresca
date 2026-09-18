@@ -31,20 +31,23 @@ ON CONFLICT ("idCategoria") DO NOTHING;
 
 -- 5. Produto
 INSERT INTO "Produto" ("idProduto", "cod_Barras", "descricao", "categoria", "quantidade", "preco", "preco_original", "parcelas", "idCategoria") VALUES
-(1, 1234567890123, 'BUQUÊ DE ROSAS', 'BUQUÊS', 10, 50.00, NULL, 1, 2),
-(2, 1234567890124, 'RAMO DE LÍRIO', 'FLORES', 8, 45.00, 55.00, 3, 1),
-(3, 1234567890125, 'ARRANJO TROPICAL', 'ARRANJOS', 5, 65.00, 85.00, 2, 3),
-(4, 1234567890126, 'CESTA COM FLORES', 'CESTAS', 3, 80.00, NULL, 1, 4),
-(5, 1234567890127, 'ORQUÍDEA BRANCA', 'FLORES', 6, 55.00, 70.00, 2, 1),
-(6, 1234567890128, 'GIRASSÓIS', 'FLORES', 12, 40.00, 55.00, 2, 1),
-(7, 1234567890129, 'MIX DE FLORES', 'BUQUÊS', 7, 70.00, NULL, 1, 2),
-(8, 1234567890130, 'ROSAS VERMELHAS', 'FLORES', 15, 55.00, 70.00, 2, 1),
-(9, 1234567890131, 'LAVANDA PERFUMADA', 'FLORES', 9, 35.00, NULL, 1, 1),
-(10, 1234567890132, 'CESTA ROMÂNTICA', 'CESTAS', 4, 120.00, 150.00, 3, 4)
+(1, 1234567890123, 'ORQUÍDEA ROSA', 'FLORES', 10, 50.00, NULL, 1, 1),
+(2, 1234567890124, 'CESTA ROMÂNTICA', 'CESTAS', 8, 45.00, 55.00, 3, 4),
+(3, 1234567890125, 'BUQUÊ COLORIDO', 'BUQUÊS', 5, 65.00, 85.00, 2, 2),
+(4, 1234567890126, 'ORQUÍDEA BORGONHA', 'FLORES', 3, 80.00, NULL, 1, 1),
+(5, 1234567890127, 'BUQUÊ DE ROSAS ROSAS', 'BUQUÊS', 6, 55.00, 70.00, 2, 2),
+(6, 1234567890128, 'BUQUÊ DE ROSAS', 'BUQUÊS', 12, 40.00, 55.00, 2, 2),
+(7, 1234567890129, 'BUQUÊ VERMELHO', 'BUQUÊS', 7, 70.00, NULL, 1, 2),
+(8, 1234567890130, 'ORQUÍDEA ROSA', 'FLORES', 15, 55.00, 70.00, 2, 1),
+(9, 1234567890131, 'CESTA ROMÂNTICA', 'CESTAS', 9, 35.00, NULL, 1, 4),
+(10, 1234567890132, 'BUQUÊ COLORIDO', 'BUQUÊS', 4, 120.00, 150.00, 3, 2)
 ON CONFLICT ("idProduto") DO UPDATE SET
+  "descricao" = EXCLUDED."descricao",
+  "categoria" = EXCLUDED."categoria",
   "preco" = EXCLUDED."preco",
   "preco_original" = EXCLUDED."preco_original",
-  "parcelas" = EXCLUDED."parcelas";
+  "parcelas" = EXCLUDED."parcelas",
+  "idCategoria" = EXCLUDED."idCategoria";
 
 -- 6. Formas de Pagamento
 INSERT INTO "FormaPagto" ("idFormaPgto", "descricao") VALUES
