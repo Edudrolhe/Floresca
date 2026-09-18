@@ -74,45 +74,6 @@
 
 ---
 
-## Quick Start
-
-### Pré-requisitos
-
-- Node.js v18+
-- npm
-- PostgreSQL 15+ (Docker ou Neon)
-
-### Instalação
-
-```bash
-# 1. Clonar o repositório
-git clone https://github.com/seu-usuario/floresca-floricultura.git
-cd floresca-floricultura
-
-# 2. Instalar dependências
-npm install
-
-# 3. Configurar banco (Docker)
-docker-compose up -d
-
-# 4. Rodar migrações
-npm run db:update
-npm run db:migrate
-
-# 5. Gerar contratos Prisma
-npm run contract:emit
-
-# 6. Popular dados iniciais
-npm run db:seed
-
-# 7. Iniciar servidor
-npm run dev
-```
-
-Acesse [http://localhost:3000](http://localhost:3000)
-
----
-
 ## Estrutura do Projeto
 
 ```
@@ -138,38 +99,6 @@ floresca-floricultura/
 ├── public/                 # Assets estáticos
 └── migrations/             # Histórico de migrações
 ```
-
----
-
-## Scripts
-
-| Comando | Descrição |
-|---------|-----------|
-| `npm run dev` | Servidor de desenvolvimento |
-| `npm run build` | Build para produção |
-| `npm run start` | Iniciar produção |
-| `npm run lint` | Verificação de código |
-| `npm run db:update` | Atualizar schema do banco |
-| `npm run db:migrate` | Executar migrações |
-| `npm run db:seed` | Popular dados iniciais |
-| `npm run contract:emit` | Gerar contratos TypeScript |
-
----
-
-## Deploy
-
-### Vercel (Recomendado)
-
-1. Conecte o repositório ao [Vercel](https://vercel.com)
-2. Configure as variáveis de ambiente:
-   - `DATABASE_URL` — Conexão com PostgreSQL
-   - `AUTH_SECRET` — Secret do NextAuth
-   - `GOOGLE_CLIENT_ID` — Client ID do Google
-   - `GOOGLE_CLIENT_SECRET` — Client Secret do Google
-   - `MERCADO_PAGO_ACCESS_TOKEN` — Token de produção MP
-   - `NEXT_PUBLIC_MERCADO_PAGO_PUBLIC_KEY` — Chave pública MP
-   - `RESEND_API_KEY` — Chave da API Resend
-3. Deploy automático a cada push no `main`
 
 ---
 
